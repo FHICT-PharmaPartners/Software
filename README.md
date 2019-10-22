@@ -1,3 +1,3 @@
-# This project is for PharmaPartners
+# Tijdelijke-PharmaPartners
 
-abcdefghijklmnopqrstuvwxyz
+Speciaal aangemaakt omdat onze Roemeense hoer ons geen tijdelijke admin had gegeven!
