@@ -9,10 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>mijnpharmaLibrary</module>
-        <module>mijnpharmaJUnitTest</module>
-        <module>mijnpharmaRESTServer</module>
-        <module>mijnpharmaRESTClient</module>
     </modules>
 
 
