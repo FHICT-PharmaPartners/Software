@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mijnpharmaLibrary" />
         <module name="mijnpharmaJUnitTest" />
+        <module name="mijnpharmaRESTServer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mijnpharmaRESTClient" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
