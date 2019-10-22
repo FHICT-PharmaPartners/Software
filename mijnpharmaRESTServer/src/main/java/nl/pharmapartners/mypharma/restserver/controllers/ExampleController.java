@@ -1,0 +1,57 @@
+package nl.pharmapartners.mypharma.restserver.controllers;
+
+import org.json.JSONObject;
+import org.springframework.web.bind.annotation.*;
+
+@RestController()
+@RequestMapping("/example")
+public class ExampleController {
+
+    // GET /api/example
+    @GetMapping()
+    public String test() {
+        return "Test Method";
+    }
+
+    // GET /api/example/paramFromUrl/cheesecake
+    @GetMapping("/paramFromUrl/{param}")
+    public String fromUrl(@PathVariable("param") String param) {
+        return "Your param is: " + param;
+    }
+
+    // GET /api/example/test
+    @GetMapping("/test")
+    public String ff() {
+        return "Test with extra path";
+    }
+
+    // GET /api/example/echo?text=HELLO
+    @GetMapping("/echo")
+    public String echo(@RequestParam("text") String text) {
+        return text;
+    }
+
+    // POST /api/example/multiply
+    // DATA: a = Hello
+    //       b = World
+    @PostMapping("/test")
+    public String post(@RequestParam("a") String a, @RequestParam("b") String b) {
+        JSONObject json = new JSONObject();
+        json.put("a", a);
+        json.put("b", b);
+        return json.toString();
+    }
+
+    // PUT /api/example/multiply
+    // DATA: a = 3
+    //       b = 5
+    @PutMapping("/multiply")
+    public String multiply(@RequestParam("a") int a, @RequestParam("b") int b) {
+        JSONObject json = new JSONObject();
+        json.put("a", a);
+        json.put("b", b);
+        json.put("result", a * b);
+        return json.toString();
+    }
+
+}
