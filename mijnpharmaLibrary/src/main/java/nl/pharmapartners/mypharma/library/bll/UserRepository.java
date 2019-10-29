@@ -31,4 +31,6 @@ public class UserRepository {
         return context;
     }
 
+    public void getUserById(int id) {
+    }
 }

@@ -1,5 +1,6 @@
 package nl.pharmapartners.mypharma.restserver.controllers;
 
+import nl.pharmapartners.mypharma.library.bll.UserRepository;
 import nl.pharmapartners.mypharma.library.model.Patient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,8 @@ public class UserController {
     //Get request for single user
     @GetMapping(value = "/{id}")
     public void getUserById(@PathParam("id") int id) {
-
+         UserRepository userrepo = new  UserRepository();
+         userrepo.getUserById(id);
     }
 
     //Put request to update user information
