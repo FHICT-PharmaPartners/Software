@@ -1,4 +1,5 @@
 package nl.pharmapartners.mypharma.library.BLL;
 
-public class Test {
+public class UserRepository {
+
 }
