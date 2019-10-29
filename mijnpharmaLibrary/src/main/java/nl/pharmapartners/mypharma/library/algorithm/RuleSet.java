@@ -1,6 +1,6 @@
-package nl.pharmapartners.mypharma.library.Algorithm;
+package nl.pharmapartners.mypharma.library.algorithm;
 
-import nl.pharmapartners.mypharma.library.Models.*;
+import nl.pharmapartners.mypharma.library.model.*;
 
 import java.util.List;
 

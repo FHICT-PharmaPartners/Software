@@ -1,4 +1,4 @@
-package nl.pharmapartners.mypharma.library.Models;
+package nl.pharmapartners.mypharma.library.model;
 
 public class Medication {
     private Medicine medicine;
