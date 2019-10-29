@@ -1,4 +1,4 @@
-package nl.pharmapartners.mypharma.library.Models;
+package nl.pharmapartners.mypharma.library.model;
 
 public abstract class User {
     private int id;
