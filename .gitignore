@@ -85,7 +85,7 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
-# Chutzpah Test files
+# Chutzpah nl.pharmapartners.mypharma.library.Test files
 _Chutzpah*
 
 # Visual C++ cache files
@@ -328,7 +328,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
-
-
-mijnpharmaLibrary/src/main/java/config.yml
-mijnpharmaLibrary/src/main/java/config.yml
+/mijnpharmaRESTServer/target/
+/mijnpharmaLibrary/target/
