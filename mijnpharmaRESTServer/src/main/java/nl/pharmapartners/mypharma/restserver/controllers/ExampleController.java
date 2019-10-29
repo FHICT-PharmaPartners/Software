@@ -1,7 +1,12 @@
 package nl.pharmapartners.mypharma.restserver.controllers;
 
+import com.google.gson.Gson;
+import nl.pharmapartners.mypharma.library.bll.UserRepository;
+import nl.pharmapartners.mypharma.library.model.User;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController()
 @RequestMapping("/example")
@@ -11,6 +16,13 @@ public class ExampleController {
     @GetMapping()
     public String test() {
         return "Test Method";
+    }
+
+    // GET /api/example/users
+    @GetMapping("/users")
+    public String users() {
+         ArrayList<User> users = new UserRepository().getUsers();
+         return new Gson().toJson(users).toString();
     }
 
     // GET /api/example/paramFromUrl/cheesecake

@@ -1,23 +1,26 @@
 package nl.pharmapartners.mypharma.library.model;
 
+import nl.pharmapartners.mypharma.library.model.enums.Sex;
+
 import java.util.Date;
 import java.util.List;
 
 public class Patient extends User {
     private Date dateOfBirth;
-    private int height;
-    private int weight;
-    private Gender gender;
+    private double height;
+    private double weight;
+    private Sex sex;
     private int creatineClearance;
     private List<Medication> medicationList;
     private List<Advice> adviceList;
 
-    public Patient(String firstName, String insertion, String lastName, Date dateOfBirth, int height, int weight, Gender gender) {
-        super(firstName, insertion, lastName);
+    public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance) {
+        super(id, firstName, insertion, lastName, emailAddress, password);
         this.dateOfBirth = dateOfBirth;
         this.height = height;
         this.weight = weight;
-        this.gender = gender;
+        this.sex = sex;
+        this.creatineClearance = creatineClearance;
     }
 
     public Date getDateOfBirth() {
@@ -28,7 +31,7 @@ public class Patient extends User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -36,7 +39,7 @@ public class Patient extends User {
         this.height = height;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -44,12 +47,12 @@ public class Patient extends User {
         this.weight = weight;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Sex getSex() {
+        return sex;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setSex(Sex gender) {
+        this.sex = sex;
     }
 
     public int getCreatineClearance() {

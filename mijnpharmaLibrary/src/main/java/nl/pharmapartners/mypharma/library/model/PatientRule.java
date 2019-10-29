@@ -1,9 +1,11 @@
 package nl.pharmapartners.mypharma.library.model;
 
+import nl.pharmapartners.mypharma.library.model.enums.Sex;
+
 public class PatientRule {
     private int id;
     private int age;
-    private Gender gender;
+    private Sex sex;
     private boolean postMenoPause;
     private int weight;
     private int creatineClearance;
@@ -24,12 +26,12 @@ public class PatientRule {
         this.age = age;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Sex getGender() {
+        return sex;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setGender(Sex gender) {
+        this.sex = gender;
     }
 
     public boolean isPostMenoPause() {

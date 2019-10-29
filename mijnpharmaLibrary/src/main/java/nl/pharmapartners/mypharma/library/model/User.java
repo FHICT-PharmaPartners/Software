@@ -5,21 +5,20 @@ public abstract class User {
     private String firstName;
     private String insertion;
     private String lastName;
-    private String eMail;
-    //private String Role;
+    private String emailAddress;
+    private String password;
 
-    public User(String firstName, String insertion, String lastName) {
+    public User(int id, String firstName, String insertion, String lastName, String emailAddress, String password) {
+        this.id = id;
         this.firstName = firstName;
         this.insertion = insertion;
         this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.password = password;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -46,11 +45,11 @@ public abstract class User {
         this.lastName = lastName;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 }
