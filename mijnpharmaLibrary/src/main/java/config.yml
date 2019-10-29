@@ -1,6 +1,0 @@
-connection:
-  driver:
-  url: Server=mssql.fhict.local;Database=dbi404113;User Id=dbi404113;Password=mijnPharma1!;
-  username: dbi404113
-  password: mijnPharma1!
-
