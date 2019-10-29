@@ -329,4 +329,6 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 /mijnpharmaRESTServer/target/
-/mijnpharmaLibrary/target/
+mijnpharmaJUnitTest/target/
+mijnpharmaLibrary/target/
+mijnpharmaLibrary/src/resources/db.properties
