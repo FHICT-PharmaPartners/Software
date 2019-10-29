@@ -19,7 +19,7 @@ public class ExampleController {
     }
 
     // GET /api/example/users
-    @GetMapping("/users")
+    @GetMapping("/users", Method = RequestMethod.GET)
     public String users() {
          ArrayList<User> users = new UserRepository().getUsers();
          return new Gson().toJson(users).toString();
