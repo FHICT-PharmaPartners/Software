@@ -1,4 +1,4 @@
-package DAL.Models;
+package nl.pharmapartners.mypharma.library.Models;
 
 public abstract class User {
     private int id;

@@ -1,4 +1,4 @@
-package DAL.Models;
+package nl.pharmapartners.mypharma.library.Models;
 
 import java.time.LocalDateTime;
 

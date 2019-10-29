@@ -1,5 +1,7 @@
-import DAL.Models.Gender;
-import DAL.Models.Patient;
+package nl.pharmapartners.mypharma.library;
+
+import nl.pharmapartners.mypharma.library.Models.Gender;
+import nl.pharmapartners.mypharma.library.Models.Patient;
 
 import java.util.Date;
 
