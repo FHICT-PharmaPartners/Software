@@ -23,6 +23,11 @@ public class UserRepository {
         return new ArrayList<>(users);
     }
 
+    public User getUserById(int id) {
+        // Return a copy of the array
+        return context.getUserById(id);
+    }
+
     private MySQLUserContext getContext() {
         if (context == null) {
             context = new MySQLUserContext();
