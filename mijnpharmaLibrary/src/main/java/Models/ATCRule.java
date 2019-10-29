@@ -1,4 +1,4 @@
-package DAL.Models;
+package Models;
 
 public class ATCRule {
     private int id;

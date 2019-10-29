@@ -1,4 +1,4 @@
-package DAL.Models;
+package Models;
 
 public class Medicine {
     private int id;

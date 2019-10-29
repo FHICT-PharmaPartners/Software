@@ -1,4 +1,4 @@
-package DAL.Models;
+package Models;
 
 public class PatientRule {
     private int id;

@@ -1,4 +1,4 @@
-package DAL.Models;
+package Models;
 
 public abstract class User {
     private int id;

@@ -1,4 +1,4 @@
-package DAL.Models;
+package Models;
 
 public class PRKRule {
     private int id;

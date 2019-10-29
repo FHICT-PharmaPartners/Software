@@ -1,5 +1,5 @@
-import DAL.Models.Gender;
-import DAL.Models.Patient;
+import Models.Gender;
+import Models.Patient;
 
 import java.util.Date;
 

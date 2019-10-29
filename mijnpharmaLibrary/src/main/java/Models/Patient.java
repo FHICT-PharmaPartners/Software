@@ -1,4 +1,4 @@
-package DAL.Models;
+package Models;
 
 import java.util.Date;
 import java.util.List;

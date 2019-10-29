@@ -1,6 +1,6 @@
 package Algorithm;
 
-import DAL.Models.*;
+import Models.*;
 
 import java.util.List;
 

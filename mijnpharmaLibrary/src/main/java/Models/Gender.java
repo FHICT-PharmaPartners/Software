@@ -1,4 +1,4 @@
-package DAL.Models;
+package Models;
 
 public enum Gender {
     MALE,
