@@ -1,4 +1,4 @@
-package Models;
+package nl.pharmapartners.mypharma.library.Models;
 
 import java.util.Date;
 import java.util.List;

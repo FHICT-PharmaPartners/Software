@@ -1,4 +1,4 @@
-package Algorithm;
+package nl.pharmapartners.mypharma.library.Algorithm;
 
 public class MFB {
     private int id;

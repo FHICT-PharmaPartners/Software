@@ -1,4 +1,4 @@
-package Models;
+package nl.pharmapartners.mypharma.library.Models;
 
 public class PatientRule {
     private int id;
