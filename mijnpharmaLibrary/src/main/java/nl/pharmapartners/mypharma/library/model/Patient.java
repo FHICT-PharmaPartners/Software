@@ -12,10 +12,6 @@ public class Patient extends User {
     private List<Medication> medicationList;
     private List<Advice> adviceList;
 
-    public Patient(String firstName, String insertion, String lastName) {
-        super(firstName, insertion, lastName);
-    }
-
     public Patient(String firstName, String insertion, String lastName, Date dateOfBirth, int height, int weight, Gender gender) {
         super(firstName, insertion, lastName);
         this.dateOfBirth = dateOfBirth;
@@ -78,21 +74,5 @@ public class Patient extends User {
 
     public void setAdviceList(List<Advice> adviceList) {
         this.adviceList = adviceList;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "first name=" + getFirstName() +
-                ", insertion=" + getInsertion() +
-                ", last name=" + getLastName() +
-                ", dateOfBirth=" + dateOfBirth +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", gender=" + gender +
-                ", creatineClearance=" + creatineClearance +
-                ", medicationList=" + medicationList +
-                ", adviceList=" + adviceList +
-                '}';
     }
 }
