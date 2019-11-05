@@ -24,7 +24,6 @@ public class UserRepository {
     }
 
     public User getUserById(int id) {
-        // Return a copy of the array
         return context.getUserById(id);
     }
 
