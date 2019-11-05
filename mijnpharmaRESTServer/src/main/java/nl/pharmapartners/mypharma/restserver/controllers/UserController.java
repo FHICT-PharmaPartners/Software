@@ -13,7 +13,7 @@ public class UserController {
 
     //Post request to register the user
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addNewUser(String firstName, String insertion, String lastName, String emailAddress, String password) {
+    public void addNewUser(@RequestBody User user) {
 
     }
 
