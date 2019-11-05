@@ -18,43 +18,12 @@ public class PatientRule {
         this.id = id;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
+    public PatientRule(int id, int age, Sex sex, boolean postMenoPause, int weight, int creatineClearance) {
+        this.id = id;
         this.age = age;
-    }
-
-    public Sex getGender() {
-        return sex;
-    }
-
-    public void setGender(Sex gender) {
-        this.sex = gender;
-    }
-
-    public boolean isPostMenoPause() {
-        return postMenoPause;
-    }
-
-    public void setPostMenoPause(boolean postMenoPause) {
+        this.sex = sex;
         this.postMenoPause = postMenoPause;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
         this.weight = weight;
-    }
-
-    public int getCreatineClearance() {
-        return creatineClearance;
-    }
-
-    public void setCreatineClearance(int creatineClearance) {
         this.creatineClearance = creatineClearance;
     }
 }
