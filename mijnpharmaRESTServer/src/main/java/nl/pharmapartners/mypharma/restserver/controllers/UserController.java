@@ -2,7 +2,6 @@ package nl.pharmapartners.mypharma.restserver.controllers;
 
 import nl.pharmapartners.mypharma.library.model.Patient;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -12,10 +11,10 @@ import javax.websocket.server.PathParam;
 public class UserController {
 
     //Post request to register the user
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addNewUser(String firstName, String insertion, String lastName, String emailAddress, String password) {
-
-    }
+//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public void addNewUser(@RequestBody Patient patient) {
+//
+//    }
 
     //Get request for single user
     @GetMapping(value = "/{id}")
