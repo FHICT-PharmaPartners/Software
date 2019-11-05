@@ -16,19 +16,40 @@ public class MedicineRepositoryTest {
     private MedicineTestContext context;
 
     public MedicineRepositoryTest(){
-        context = new
+        context = new MedicineTestContext();
     }
 
     @BeforeEach
     void setup(){
-        repo = new MedicineRepository();
     }
 
     @AfterEach
     void tearDown(){
-
     }
 
     @Test
+    public  ArrayList<Medicine> getAllMedicine(){
+        if (medicine == null){
+            medicine = context.getAllMedicine();
+        }
 
+        // Return a copy of the array
+        return new ArrayList<>(medicine);
+    }
+
+    public Medicine getMedicineById(int id){
+        return  context.getMedicineById(id);
+    }
+
+    public void addMedicine(Medicine medicine){
+        context.addMedicine(medicine);
+    }
+
+    private MedicineTestContext getContext(){
+        if (context == null) {
+            context = new MedicineTestContext();
+        }
+
+        return context;
+    }
 }
