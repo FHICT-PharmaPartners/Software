@@ -28,6 +28,10 @@ public class MedicineRepository {
         return  context.getMedicineById(id);
     }
 
+    public void addMedicine(Medicine medicine){
+        context.addMedicine(medicine);
+    }
+
     private MySQLMedicineContext getContext(){
         if (context == null) {
             context = new MySQLMedicineContext();

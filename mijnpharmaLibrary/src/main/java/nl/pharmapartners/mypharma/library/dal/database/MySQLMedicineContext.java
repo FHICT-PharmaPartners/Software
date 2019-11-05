@@ -32,4 +32,12 @@ public class MySQLMedicineContext {
 
         return medicine;
     }
+
+    public void addMedicine(Medicine medicine){
+        SQLQuery query = new SQLQuery("INSERT INTO medicine (id,name,description) VALUES (?,?,?)");
+        query.addParameter(1, medicine.getId());
+        query.addParameter(2,medicine.getName());
+        query.addParameter(3,medicine.getDescription());
+        mysql.executeQuery(query);
+    }
 }
