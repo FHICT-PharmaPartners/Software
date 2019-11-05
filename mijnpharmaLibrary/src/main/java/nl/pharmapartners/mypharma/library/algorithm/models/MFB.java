@@ -18,24 +18,8 @@ public class MFB {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getRuleVersion() {
         return ruleVersion;
-    }
-
-    public void setRuleVersion(String ruleVersion) {
-        this.ruleVersion = ruleVersion;
-    }
-
-    public RuleSet getRuleSet() {
-        return ruleSet;
-    }
-
-    public void setRuleSet(RuleSet ruleSet) {
-        this.ruleSet = ruleSet;
     }
 
     public MFB(int id, String name, String ruleVersion) {
