@@ -7,15 +7,15 @@ import java.util.List;
 public class RuleSet {
     private Patient patient;
     private List<PatientRule> patientRuleList;
-    private List<PRKRule> prkRuleList;
+    private List<PRKRule> PRKRuleList;
     private List<Medication> dosageRule;
     private List<Medication> durationRule;
-    private List<ATCRule> atcRuleList;
+    private List<ATCRule> ATCRuleList;
 
-    public RuleSet(Patient patient, List<PatientRule> patientRuleList, List<PRKRule> prkRuleList, List<ATCRule> atcRuleList) {
+    public RuleSet(Patient patient, List<PatientRule> patientRuleList, List<PRKRule> PRKRuleList, List<ATCRule> ATCRuleList) {
         this.patient = patient;
         this.patientRuleList = patientRuleList;
-        this.prkRuleList = prkRuleList;
-        this.atcRuleList = atcRuleList;
+        this.PRKRuleList = PRKRuleList;
+        this.ATCRuleList = ATCRuleList;
     }
 }

@@ -1,9 +1,8 @@
 package nl.pharmapartners.mypharma.library.bll;
 
 import nl.pharmapartners.mypharma.library.algorithm.models.MFB;
-import nl.pharmapartners.mypharma.library.dal.database.MySQLContext;
 import nl.pharmapartners.mypharma.library.dal.database.MySQLRuleContext;
-import nl.pharmapartners.mypharma.library.dal.database.TestContext.TestSQLRuleContext;
+import nl.pharmapartners.mypharma.library.dal.database.TestContext.TestRuleContext;
 import nl.pharmapartners.mypharma.library.model.interfaces.IRuleContext;
 
 public class RuleRepository{
@@ -14,7 +13,7 @@ public class RuleRepository{
     }
 
     public RuleRepository(){
-        this.context = new TestSQLRuleContext();
+        this.context = new TestRuleContext();
     }
 
     public MFB getMFB(int id){
