@@ -2,13 +2,14 @@ package nl.pharmapartners.mypharma.library.dal.database;
 
 import nl.pharmapartners.mypharma.library.model.Medicine;
 import nl.pharmapartners.mypharma.library.model.database.SQLQuery;
+import nl.pharmapartners.mypharma.library.model.interfaces.MedicineContext;
 import nl.pharmapartners.mypharma.library.parsers.MedicineListParser;
 import nl.pharmapartners.mypharma.library.parsers.MedicineParser;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class MySQLMedicineContext {
+public class MySQLMedicineContext implements MedicineContext {
 
     private MySQLContext mysql;
 
