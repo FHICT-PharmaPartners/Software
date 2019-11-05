@@ -12,5 +12,4 @@ public interface MedicineContext {
 
     void addMedicine(Medicine medicine);
 
-
 }
