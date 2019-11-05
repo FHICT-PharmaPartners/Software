@@ -11,8 +11,5 @@
         <module name="mijnpharmaRESTServer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="mijnpharmaRESTClient" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

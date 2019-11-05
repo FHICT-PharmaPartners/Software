@@ -1,4 +1,4 @@
-package nl.pharmapartners.mypharma.library.algorithm;
+package nl.pharmapartners.mypharma.library.algorithm.models;
 
 import nl.pharmapartners.mypharma.library.model.*;
 

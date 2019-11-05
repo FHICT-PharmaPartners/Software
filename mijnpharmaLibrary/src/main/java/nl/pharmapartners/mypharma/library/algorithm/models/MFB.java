@@ -1,9 +1,9 @@
-package nl.pharmapartners.mypharma.library.algorithm;
+package nl.pharmapartners.mypharma.library.algorithm.models;
 
 public class MFB {
     private int id;
     private String name;
-    private int ruleVersion;
+    private String ruleVersion;
     private RuleSet ruleSet;
 
     public int getId() {
@@ -22,11 +22,11 @@ public class MFB {
         this.name = name;
     }
 
-    public int getRuleVersion() {
+    public String getRuleVersion() {
         return ruleVersion;
     }
 
-    public void setRuleVersion(int ruleVersion) {
+    public void setRuleVersion(String ruleVersion) {
         this.ruleVersion = ruleVersion;
     }
 
@@ -36,5 +36,11 @@ public class MFB {
 
     public void setRuleSet(RuleSet ruleSet) {
         this.ruleSet = ruleSet;
+    }
+
+    public MFB(int id, String name, String ruleVersion) {
+        this.id = id;
+        this.name = name;
+        this.ruleVersion = ruleVersion;
     }
 }
