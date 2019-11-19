@@ -3,6 +3,7 @@ package nl.pharmapartners.mypharma.library.model;
 public class PRKRule {
     private int id;
     private String PRKCheck;
+    private int operator;
 
     public int getId() {
         return id;

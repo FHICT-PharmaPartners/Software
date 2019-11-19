@@ -11,6 +11,10 @@ public class Medication {
         this.duration = duration;
     }
 
+    public Medication() {
+        //empty constructor
+    }
+
     public Medicine getMedicine() {
         return medicine;
     }

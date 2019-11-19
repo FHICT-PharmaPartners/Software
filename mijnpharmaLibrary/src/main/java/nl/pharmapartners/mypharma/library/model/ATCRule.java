@@ -3,6 +3,7 @@ package nl.pharmapartners.mypharma.library.model;
 public class ATCRule {
     private int id;
     private String ATCCheck;
+    private int operator;
 
     public int getId() {
         return id;
@@ -18,5 +19,13 @@ public class ATCRule {
 
     public void setATCCheck(String ATCCheck) {
         this.ATCCheck = ATCCheck;
+    }
+
+    public int getOperator() {
+        return operator;
+    }
+
+    public void setOperator(int operator) {
+        this.operator = operator;
     }
 }

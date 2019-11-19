@@ -23,6 +23,10 @@ public class Patient extends User {
         this.creatineClearance = creatineClearance;
     }
 
+    public Patient() {
+        super();
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }

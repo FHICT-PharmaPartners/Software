@@ -9,9 +9,13 @@ public class RuleSet {
     private Patient patient;
     private List<PatientRule> patientRuleList;
     private List<PRKRule> PRKRuleList;
-    private List<Medication> dosageRule;
-    private List<Medication> durationRule;
+    private List<DosageRule> dosageRule;
+    private List<DurationRule> durationRule;
     private List<ATCRule> ATCRuleList;
+
+    public RuleSet() {
+        //empty constructor
+    }
 
     public int getMFBId() {
         return MFBId;
@@ -42,11 +46,11 @@ public class RuleSet {
         return PRKRuleList;
     }
 
-    public List<Medication> getDosageRule() {
+    public List<DosageRule> getDosageRule() {
         return dosageRule;
     }
 
-    public List<Medication> getDurationRule() {
+    public List<DurationRule> getDurationRule() {
         return durationRule;
     }
 

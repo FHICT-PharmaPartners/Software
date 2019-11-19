@@ -4,11 +4,16 @@ public class Medicine {
     private int id;
     private String name;
     private String description;
+    private String atc;
 
     public Medicine(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Medicine() {
+        //empty constructor
     }
 
     public int getId() {
@@ -17,6 +22,14 @@ public class Medicine {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getAtc() {
+        return atc;
+    }
+
+    public void setAtc(String atc) {
+        this.atc = atc;
     }
 
     public String getName() {

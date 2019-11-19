@@ -17,6 +17,10 @@ public abstract class User {
         this.password = password;
     }
 
+    public User() {
+        //empty constructor
+    }
+
     public int getId() {
         return id;
     }
