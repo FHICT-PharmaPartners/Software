@@ -2,26 +2,22 @@ package nl.pharmapartners.mypharma.library.bll;
 
 import nl.pharmapartners.mypharma.library.dal.database.MySQLMedicineContext;
 import nl.pharmapartners.mypharma.library.model.Medicine;
+import nl.pharmapartners.mypharma.library.model.interfaces.MedicineContext;
 
 import javax.swing.plaf.metal.MetalComboBoxEditor;
 import java.util.ArrayList;
 
 public class MedicineRepository {
 
-    private ArrayList<Medicine> medicine;
-    private MySQLMedicineContext context;
+    private MedicineContext context;
 
-    public MedicineRepository(){
-        context = new MySQLMedicineContext();
+    public MedicineRepository(MedicineContext medicineContext){
+        context = medicineContext;
     }
 
     public  ArrayList<Medicine> getAllMedicine(){
-        if (medicine == null){
-            medicine = context.getAllMedicine();
-        }
-
         // Return a copy of the array
-        return new ArrayList<>(medicine);
+        return context.getAllMedicine();
     }
 
     public Medicine getMedicineById(int id){
@@ -30,14 +26,6 @@ public class MedicineRepository {
 
     public void addMedicine(Medicine medicine){
         context.addMedicine(medicine);
-    }
-
-    private MySQLMedicineContext getContext(){
-        if (context == null) {
-            context = new MySQLMedicineContext();
-        }
-
-        return context;
     }
 
 }

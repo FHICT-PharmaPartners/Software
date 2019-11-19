@@ -15,7 +15,6 @@ public class MedicineTestContext implements MedicineContext {
     }
 
     public ArrayList<Medicine> getAllMedicine() {
-
         return this.medicines;
     }
 
