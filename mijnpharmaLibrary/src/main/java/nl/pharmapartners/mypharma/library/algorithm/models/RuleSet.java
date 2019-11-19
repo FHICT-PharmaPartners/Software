@@ -33,4 +33,24 @@ public class RuleSet {
         this.PRKRuleList = PRKRuleList;
         this.ATCRuleList = ATCRuleList;
     }
+
+    public List<PatientRule> getPatientRuleList() {
+        return patientRuleList;
+    }
+
+    public List<PRKRule> getPRKRuleList() {
+        return PRKRuleList;
+    }
+
+    public List<Medication> getDosageRule() {
+        return dosageRule;
+    }
+
+    public List<Medication> getDurationRule() {
+        return durationRule;
+    }
+
+    public List<ATCRule> getATCRuleList() {
+        return ATCRuleList;
+    }
 }

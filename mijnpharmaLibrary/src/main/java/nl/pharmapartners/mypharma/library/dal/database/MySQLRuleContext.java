@@ -31,11 +31,15 @@ public class MySQLRuleContext implements IRuleContext {
         return mfb;
     }
 
-    public static void main(String args[]){
-        MySQLRuleContext c = new MySQLRuleContext();
-        List<PatientRule> r = c.getPatientRule(8);
-        System.out.println(r.size());
-    }
+    /**
+     * Main method to test whether query returns correct result, should be removed once finished.
+     * @param args
+     */
+//    public static void main(String args[]){
+//        MySQLRuleContext c = new MySQLRuleContext();
+//        List<PatientRule> r = c.getPatientRule(1);
+//        System.out.println(r.size());
+//    }
 
     public RuleSet getRuleSet(int id){
         return new RuleSet(getPatientRule(id), getPRKRule(id), getATCRule(id));
