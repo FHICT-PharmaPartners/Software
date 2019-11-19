@@ -12,4 +12,12 @@ public class MedicineRepository {
     public ArrayList<Medicine> getAllMedicine() {
         return medicineContext.getAllMedicine();
     }
+
+    public ArrayList<Medicine> getMedicineByName(String name) {
+        return medicineContext.getMedicineByName(name);
+    }
+
+    public Medicine getMedicineById(int id) {
+        return medicineContext.getMedicineById(id);
+    }
 }
