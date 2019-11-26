@@ -12,13 +12,12 @@ public class User {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String firstName;
-
-    @Column(nullable = true)
-    private String insertion;
-
     private String lastName;
     private String emailAddress;
     private String password;
+
+    @Column(nullable = true)
+    private String insertion;
 
     public String getId() {
         return id;
