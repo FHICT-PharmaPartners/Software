@@ -1,4 +1,4 @@
-package nl.pharmapartners.mypharma.restserver;
+package nl.pharmapartners.mypharma;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
