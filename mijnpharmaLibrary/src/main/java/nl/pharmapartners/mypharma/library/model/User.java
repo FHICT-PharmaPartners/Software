@@ -1,23 +1,26 @@
 package nl.pharmapartners.mypharma.library.model;
 
-public abstract class User {
-    private int id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     private String firstName;
+
+    @Column(nullable = true)
     private String insertion;
+
     private String lastName;
     private String emailAddress;
     private String password;
 
-    public User(int id, String firstName, String insertion, String lastName, String emailAddress, String password) {
-        this.id = id;
-        this.firstName = firstName;
-        this.insertion = insertion;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.password = password;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -51,5 +54,13 @@ public abstract class User {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

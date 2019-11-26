@@ -8,9 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mijnpharmaLibrary" />
         <module name="mijnpharmaJUnitTest" />
-        <module name="mijnpharmaRESTServer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="11">
+      <module name="mijnpharmaRESTServer" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mijnpharmaJUnitTest" options="-parameters" />
+      <module name="mijnpharmaLibrary" options="-parameters" />
+      <module name="mijnpharmaRESTServer" options="-parameters" />
+    </option>
   </component>
 </project>

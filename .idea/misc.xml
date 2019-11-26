@@ -10,6 +10,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/mijnpharmaRESTClient/pom.xml" />
+        <option value="$PROJECT_DIR$/mijnpharmaRESTServer/pom.xml" />
       </set>
     </option>
   </component>
