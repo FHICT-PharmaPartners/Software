@@ -11,6 +11,10 @@ public class PatientRule {
     private int creatineClearance;
     private int operator;
 
+    public PatientRule(){
+        //nothing
+    }
+
     public PatientRule(int id, int age, Sex sex, boolean postMenopause, int weight, int creatineClearance) {
         //set -1 as default 'empty' value
         age = -1;
@@ -25,35 +29,51 @@ public class PatientRule {
         this.creatineClearance = creatineClearance;
     }
 
-    public int getId() {
-        return id;
+    public int getAge() {
+        return age;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Sex getSex() {
         return sex;
     }
 
-    public int getAge() {
-        return age;
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
-    public boolean getPostMenopause() {
+    public boolean isPostMenopause() {
         return postMenopause;
+    }
+
+    public void setPostMenopause(boolean postMenopause) {
+        this.postMenopause = postMenopause;
     }
 
     public int getWeight() {
         return weight;
     }
 
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
     public int getCreatineClearance() {
         return creatineClearance;
     }
 
+    public void setCreatineClearance(int creatineClearance) {
+        this.creatineClearance = creatineClearance;
+    }
+
     public int getOperator() {
         return operator;
+    }
+
+    public void setOperator(int operator) {
+        this.operator = operator;
     }
 }

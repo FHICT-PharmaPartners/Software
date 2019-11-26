@@ -5,6 +5,7 @@ public class Medicine {
     private String name;
     private String description;
     private String atc;
+    private String prk;
 
     public Medicine(int id, String name, String description) {
         this.id = id;
@@ -32,19 +33,11 @@ public class Medicine {
         this.atc = atc;
     }
 
-    public String getName() {
-        return name;
+    public String getPrk() {
+        return prk;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPrk(String prk) {
+        this.prk = prk;
     }
 }

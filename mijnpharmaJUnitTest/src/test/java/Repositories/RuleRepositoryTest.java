@@ -16,9 +16,9 @@ public class RuleRepositoryTest {
         repo = new RuleRepository();
     }
 
-    @AfterEach
-    void tearDown(){
-    }
+//    @AfterEach
+//    void tearDown(){
+//    }
 
     @Test
     void getMFB(){
