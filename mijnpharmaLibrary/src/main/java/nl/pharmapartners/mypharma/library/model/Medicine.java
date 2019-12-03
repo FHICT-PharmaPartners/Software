@@ -1,28 +1,32 @@
 package nl.pharmapartners.mypharma.library.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
 public class Medicine {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     private String name;
     private String description;
     private String atc;
     private String prk;
 
-    public Medicine(int id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
+    @ManyToOne
+    private Prk prk;
+
 
     public Medicine() {
         //empty constructor
     }
 
-    public int getId() {
-        return id;
-    }
+    public String getId() {
 
-    public void setId(int id) {
-        this.id = id;
+        return id;
     }
 
     public String getName() {
@@ -54,6 +58,17 @@ public class Medicine {
     }
 
     public void setPrk(String prk) {
+
         this.prk = prk;
     }
+  
+    public Prk getPrk() {
+        return prk;
+    }
+  
+    public Prk setPrk(Prk prk){
+      this.prk = prk;
+    }  
 }
+
+

@@ -5,7 +5,7 @@ import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import java.util.Date;
 import java.util.List;
 
-public class Patient extends User {
+public class Patient {
     private Date dateOfBirth;
     private double height;
     private double weight;
@@ -31,7 +31,6 @@ public class Patient extends User {
     }
 
     public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance) {
-        super(id, firstName, insertion, lastName, emailAddress, password);
         this.dateOfBirth = dateOfBirth;
         this.height = height;
         this.weight = weight;

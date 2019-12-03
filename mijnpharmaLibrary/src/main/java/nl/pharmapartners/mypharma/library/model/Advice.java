@@ -1,22 +1,25 @@
 package nl.pharmapartners.mypharma.library.model;
 
-import java.time.LocalDateTime;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+@Entity
 public class Advice {
-    private LocalDateTime date;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     private String description;
+    private Timestamp creationTime;
 
-    public Advice(LocalDateTime date, String description) {
-        this.date = date;
-        this.description = description;
-    }
+    @ManyToOne
+    private User user;
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public String getId() {
+        return id;
     }
 
     public String getDescription() {
@@ -25,5 +28,21 @@ public class Advice {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Timestamp getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Timestamp creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
