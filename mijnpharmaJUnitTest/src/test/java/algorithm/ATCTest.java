@@ -51,7 +51,7 @@ public class ATCTest {
         atcRules.add(atcRule);
 
         //set medicine
-        medicine.setAtc("testMedicine");
+        medicine.setMedicineAtc("testMedicine");
         medication.setMedicine(medicine);
         medicationList.add(medication);
 
@@ -69,7 +69,7 @@ public class ATCTest {
         atcRules.add(atcRule);
 
         //set medicine
-        medicine.setAtc("testFalse");
+        medicine.setMedicineAtc("testFalse");
         medication.setMedicine(medicine);
         medicationList.add(medication);
 
@@ -89,7 +89,7 @@ public class ATCTest {
         atcRules.add(secondATCRule);
 
         //set medicine
-        medicine.setAtc("test");
+        medicine.setMedicineAtc("test");
         medication.setMedicine(medicine);
         medicationList.add(medication);
 
@@ -106,7 +106,7 @@ public class ATCTest {
         //set atc and rule
         String atc = "testATC";
         atcRule.setATCCheck(atc);
-        medicine.setAtc(atc);
+        medicine.setMedicineAtc(atc);
         medication.setMedicine(medicine);
 
         //add both to list

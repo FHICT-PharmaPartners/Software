@@ -56,8 +56,8 @@ public class BaseTest {
 
         //add second medication
         Medicine secondMedicine = new Medicine();
-        secondMedicine.setAtc("ATC2");
-        secondMedicine.setPrk("PRK2");
+        secondMedicine.setMedicineAtc("ATC2");
+        secondMedicine.setMedicinePrk("PRK2");
         Medication secondMedication = new Medication(secondMedicine, 10, 10);
         patient.getMedicationList().add(secondMedication);
 
@@ -74,8 +74,8 @@ public class BaseTest {
         //add second medication
         Medicine secondMedicine = new Medicine();
         secondMedicine.setName("SecondTestMedicine");
-        secondMedicine.setAtc("ATCCheck");
-        secondMedicine.setPrk("PRK2");
+        secondMedicine.setMedicineAtc("ATCCheck");
+        secondMedicine.setMedicinePrk("PRK2");
         Medication secondMedication = new Medication(secondMedicine, 10, 10);
         patient.getMedicationList().add(secondMedication);
 
@@ -93,8 +93,8 @@ public class BaseTest {
         patient.setWeight(70);
 
         Medicine medicine = new Medicine();
-        medicine.setAtc("ATC");
-        medicine.setPrk("PRK");
+        medicine.setMedicineAtc("ATC");
+        medicine.setMedicinePrk("PRK");
         medicine.setName("TestMedicijn");
 
         Medication medication = new Medication(medicine, 10, 10);

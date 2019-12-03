@@ -51,7 +51,7 @@ public class PRKTest {
         prkRules.add(prkRule);
 
         //set medicine
-        medicine.setPrk("testMedicine");
+        medicine.setMedicinePrk("testMedicine");
         medication.setMedicine(medicine);
         medicationList.add(medication);
 
@@ -69,7 +69,7 @@ public class PRKTest {
         prkRules.add(prkRule);
 
         //set medicine
-        medicine.setPrk("testFalse");
+        medicine.setMedicinePrk("testFalse");
         medication.setMedicine(medicine);
         medicationList.add(medication);
 
@@ -89,7 +89,7 @@ public class PRKTest {
         prkRules.add(secondPRKRule);
 
         //set medicine
-        medicine.setPrk("test");
+        medicine.setMedicinePrk("test");
         medication.setMedicine(medicine);
         medicationList.add(medication);
 
@@ -106,7 +106,7 @@ public class PRKTest {
         //set PRK and rule
         String prk = "testPRK";
         prkRule.setPRKCheck(prk);
-        medicine.setPrk(prk);
+        medicine.setMedicinePrk(prk);
         medication.setMedicine(medicine);
 
         //add both to list

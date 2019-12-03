@@ -21,7 +21,7 @@ public class Patient {
     }
 
     public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance, int age) {
-        super(id, firstName, insertion, lastName, emailAddress, password);
+        //super(id, firstName, insertion, lastName, emailAddress, password);
         this.dateOfBirth = dateOfBirth;
         this.height = height;
         this.weight = weight;

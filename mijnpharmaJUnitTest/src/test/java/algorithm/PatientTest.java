@@ -99,7 +99,8 @@ public class PatientTest {
         patientRules.add(patientRule);
 
         boolean expected = true;
-        assertEquals(expected, algorithm.checkPatient(patientRules, patient));
+        boolean actual = algorithm.checkPatient(patientRules, patient);
+        assertEquals(expected, actual);
     }
 
     @Test

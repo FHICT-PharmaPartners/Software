@@ -44,7 +44,7 @@ public class Algorithm {
         if (atcRules.size() > 0) //check if rule list contains any objects
             for (Medication m : medicationList) { //loop through all medication that is currently used
                 for (ATCRule r : atcRules) { //loop through all rules for each medicine that is used
-                    if (!checkEquals(r.getATCCheck(), m.getMedicine().getAtc())) { //check if any atc match using checkEquals().
+                    if (!checkEquals(r.getATCCheck(), m.getMedicine().getMedicineAtc())) { //check if any atc match using checkEquals().
                         try {
                             diagnosis.getIssues().add(m.getMedicine().getName() + " heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
@@ -108,50 +108,55 @@ public class Algorithm {
                 int operator = r.getOperator();
 
                 if (ageRule != 0) {
-                    if (!switchCheck(ageRule, patient.getAge(), operator))
+                    if (!switchCheck(ageRule, patient.getAge(), operator)) {
                         try {
                             diagnosis.getIssues().add("Uw leeftijd heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
                             //do nothing
                         }
                         passed = false;
+                    }
                 }
                 if (sex != null) {
-                    if (sex.toString() != patient.getSex().toString())
+                    if (sex.toString() != patient.getSex().toString()) {
                         try {
                             diagnosis.getIssues().add("Uw geslacht heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
                             //do nothing
                         }
                         passed = false;
+                    }
                 }
                 if (creatineRule != 0) {
-                    if (!switchCheck(creatineRule, patient.getCreatineClearance(), operator))
+                    if (!switchCheck(creatineRule, patient.getCreatineClearance(), operator)) {
                         try {
                             diagnosis.getIssues().add("Uw creatinegehalte heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
                             //do nothing
                         }
                         passed = false;
+                    }
                 }
                 if (weightRule != 0) {
-                    if (!switchCheck((int) weightRule, (int) patient.getWeight(), operator)) //cast weight to int
+                    if (!switchCheck((int) weightRule, (int) patient.getWeight(), operator)) {//cast weight to int
                         try {
                             diagnosis.getIssues().add("Uw gewicht heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
                             //do nothing
                         }
                         passed = false;
+                    }
                 }
                 if (patient.getSex() == Sex.FEMALE)
                     if (menoPauseCheck) {
-                        if (r.isPostMenoPause() != patient.getPostMenoPause())
+                        if (r.isPostMenoPause() != patient.getPostMenoPause()) {
                             try {
                                 diagnosis.getIssues().add("De overgang heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                             } catch (Exception e) {
                                 //do nothing
                             }
                             passed = false;
+                        }
                     }
             }
         return passed; //if checklist is empty or all have passed. Return true.
@@ -163,7 +168,7 @@ public class Algorithm {
         if (prkRules.size() > 0)
             for (Medication m : medicationList) {
                 for (PRKRule r : prkRules) {
-                    if (!checkEquals(r.getPRKCheck(), m.getMedicine().getPrk())) {
+                    if (!checkEquals(r.getPRKCheck(), m.getMedicine().getMedicinePrk())) {
                         try {
                             diagnosis.getIssues().add(m.getMedicine().getName() + " heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
