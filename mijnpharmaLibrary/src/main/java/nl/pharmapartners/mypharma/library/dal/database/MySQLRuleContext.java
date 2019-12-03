@@ -1,6 +1,6 @@
 package nl.pharmapartners.mypharma.library.dal.database;
 
-import javafx.css.Rule;
+//import javafx.css.Rule;
 import nl.pharmapartners.mypharma.library.algorithm.models.MFB;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
 import nl.pharmapartners.mypharma.library.dal.database.MySQLContext;

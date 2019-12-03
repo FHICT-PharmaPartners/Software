@@ -5,6 +5,15 @@ public class DosageRule {
     private int DosageCheck;
     private int operator;
 
+    public DosageRule(){
+        //nothing
+    }
+
+    public DosageRule(int dosageCheck, int operator) {
+        DosageCheck = dosageCheck;
+        this.operator = operator;
+    }
+
     public int getDosageCheck() {
         return DosageCheck;
     }

@@ -30,7 +30,7 @@ public class DosageTest {
     void setUp() {
         ruleSet = new RuleSet();
         patient = new Patient();
-        algorithm = new Algorithm(ruleSet, patient);
+        algorithm = new Algorithm();
     }
 
     @Test

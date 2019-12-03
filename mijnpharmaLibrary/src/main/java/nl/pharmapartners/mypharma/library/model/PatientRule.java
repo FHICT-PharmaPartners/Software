@@ -6,12 +6,13 @@ public class PatientRule {
     private int id;
     private int age;
     private Sex sex;
-    private boolean postMenopause;
+    private boolean postMenopauseCheck;
+    private boolean isPostMenoPause;
     private int weight;
     private int creatineClearance;
     private int operator;
 
-    public PatientRule(){
+    public PatientRule() {
         //nothing
     }
 
@@ -24,7 +25,7 @@ public class PatientRule {
         this.id = id;
         this.age = age;
         this.sex = sex;
-        this.postMenopause = postMenopause;
+        this.postMenopauseCheck = postMenopause;
         this.weight = weight;
         this.creatineClearance = creatineClearance;
     }
@@ -45,12 +46,20 @@ public class PatientRule {
         this.sex = sex;
     }
 
-    public boolean isPostMenopause() {
-        return postMenopause;
+    public boolean isPostMenopauseCheck() {
+        return postMenopauseCheck;
     }
 
-    public void setPostMenopause(boolean postMenopause) {
-        this.postMenopause = postMenopause;
+    public void setPostMenopauseCheck(boolean postMenopauseCheck) {
+        this.postMenopauseCheck = postMenopauseCheck;
+    }
+
+    public boolean isPostMenoPause() {
+        return isPostMenoPause;
+    }
+
+    public void setPostMenoPause(boolean postMenoPause) {
+        isPostMenoPause = postMenoPause;
     }
 
     public int getWeight() {

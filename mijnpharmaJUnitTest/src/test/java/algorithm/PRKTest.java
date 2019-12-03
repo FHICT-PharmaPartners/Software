@@ -30,7 +30,7 @@ public class PRKTest {
     void setUp() {
         ruleSet = new RuleSet();
         patient = new Patient();
-        algorithm = new Algorithm(ruleSet, patient);
+        algorithm = new Algorithm();
     }
     @Test
     void testNoPRK(){ //test empty rule list. Should always return true.
