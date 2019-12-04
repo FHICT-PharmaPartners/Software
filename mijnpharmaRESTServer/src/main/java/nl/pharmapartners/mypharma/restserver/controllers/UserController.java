@@ -7,6 +7,8 @@ import nl.pharmapartners.mypharma.restserver.model.MedicalInfo;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -31,16 +33,10 @@ public class UserController {
     public void updateUserInformation(@PathVariable("id") String id, @ModelAttribute MedicalInfo info) {
 
     }
-
+    
     //Post request to log the user in
-    @PostMapping(value = "login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void logUserIn(String emailAddress, String password) {
-
-    }
-
-    //Delete request to log the user out
-    @PostMapping(value = "logout")
-    public void logUserOut() {
-
+    @GetMapping()
+    public String getEmail(HttpSession session) {
+        return (String) session.getAttribute("email");
     }
 }
