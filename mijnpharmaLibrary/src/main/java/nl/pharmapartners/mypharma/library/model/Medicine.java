@@ -19,6 +19,9 @@ public class Medicine {
     @ManyToOne
     private Prk prk;
 
+    @ManyToOne
+    private Atc atc;
+
     public String getId() {
 
         return id;
@@ -64,6 +67,14 @@ public class Medicine {
     public void setPrk(Prk prk){
       this.prk = prk;
     }  
+
+    public Atc getAtc() {
+        return atc;
+    }
+
+    public void setAtc(Atc atc) {
+        this.atc = atc;
+    }
 }
 
 

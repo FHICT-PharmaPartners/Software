@@ -1,9 +1,9 @@
 package nl.pharmapartners.mypharma.library.dal.repository;
 
-import nl.pharmapartners.mypharma.library.model.Atc;
+import nl.pharmapartners.mypharma.library.model.DosageRule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ATCRepository extends JpaRepository<Atc, String> {
+public interface DosageRepository extends JpaRepository<DosageRule, String> {
 }

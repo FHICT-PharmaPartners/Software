@@ -1,28 +1,30 @@
 package nl.pharmapartners.mypharma.library.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class DosageRule {
-    private int id;
-    private int DosageCheck;
-    private int operator;
 
-    public DosageRule(int dosageCheck, int operator) {
-        DosageCheck = dosageCheck;
-        this.operator = operator;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
+    private int dosage;
+
+    public String getId() {
+        return id;
     }
 
-    public int getDosageCheck() {
-        return DosageCheck;
+    public int getDosage() {
+        return dosage;
     }
 
-    public void setDosageCheck(int dosageCheck) {
-        DosageCheck = dosageCheck;
-    }
-
-    public int getOperator() {
-        return operator;
-    }
-
-    public void setOperator(int operator) {
-        this.operator = operator;
+    public void setDosage(int dosage) {
+        this.dosage = dosage;
     }
 }

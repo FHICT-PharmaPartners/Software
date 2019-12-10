@@ -26,9 +26,8 @@ public class MedicineController {
     }
 
     @GetMapping(value = "/getByName/{name}")
-    public Optional<Medicine> getMedicineByName(@PathVariable String name){
-        //doesn't work, needs custom method
-        return medicineRepository.findById(name);
+    public List<Medicine> getMedicineByName(@PathVariable String name){
+        return medicineRepository.findByMedicineContaining(name);
     }
 
     @GetMapping(value = "/getById/{id}")
@@ -37,7 +36,7 @@ public class MedicineController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addUser(@RequestBody Medicine medicine){
+    public void addMedicine(@RequestBody Medicine medicine){
         medicineRepository.save(medicine);
     }
 }

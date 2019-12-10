@@ -1,7 +1,19 @@
 package nl.pharmapartners.mypharma.library.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ATCRule {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     private String ATCCheck;
     private int operator;
 
@@ -9,12 +21,8 @@ public class ATCRule {
         this.ATCCheck = ATCCheck;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getATCCheck() {

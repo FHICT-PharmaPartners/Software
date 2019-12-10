@@ -8,23 +8,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Prk {
+public class UsageRule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    private String name;
+    private int usageDuration;
 
     public String getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public int getUsageDuration() {
+        return usageDuration;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsageDuration(int usageDuration) {
+        this.usageDuration = usageDuration;
     }
 }
