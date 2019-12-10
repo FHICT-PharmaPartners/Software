@@ -3,10 +3,12 @@ package algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
+import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -29,12 +31,13 @@ public class ATCTest {
     @BeforeEach
     void setUp() {
         ruleSet = new RuleSet();
-        patient = new Patient();
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
         algorithm = new Algorithm();
     }
 
     @Test
-    void testNoATC(){ //test empty rule list. Should always return true.
+    void testNoATC() { //test empty rule list. Should always return true.
         resetATC();
 
         boolean expected = true;
@@ -42,7 +45,7 @@ public class ATCTest {
     }
 
     @Test
-    void testOneATCTrue(){ //test one ATC rule and compatible medicine.
+    void testOneATCTrue() { //test one ATC rule and compatible medicine.
         resetATC();
         resetMedication();
 
@@ -78,7 +81,7 @@ public class ATCTest {
     }
 
     @Test
-    void testTwoATCTrue(){ //test multiple ATC rules with compatible medicine
+    void testTwoATCTrue() { //test multiple ATC rules with compatible medicine
         resetATC();
         resetMedication();
 
@@ -99,7 +102,7 @@ public class ATCTest {
     }
 
     @Test
-    void testTwoATCFalse(){ //test multiple ATC rules with incompatible medicine.
+    void testTwoATCFalse() { //test multiple ATC rules with incompatible medicine.
         resetATC();
         resetMedication();
 
@@ -116,7 +119,7 @@ public class ATCTest {
         atcRule.setATCCheck("testATC");
 
         //add new atc
-        ATCRule atcRule1 = new ATCRule();
+        ATCRule atcRule1 = new ATCRule(atc);
         atcRule1.setATCCheck("test2");
 
         atcRules.add(atcRule1);
@@ -128,13 +131,13 @@ public class ATCTest {
 
     private void resetATC() {
         atcRules = new ArrayList<ATCRule>();
-        atcRule = new ATCRule();
-        secondATCRule = new ATCRule();
+        atcRule = new ATCRule("");
+        secondATCRule = new ATCRule("");
     }
 
-    private void resetMedication(){
+    private void resetMedication() {
         medicationList = new ArrayList<Medication>();
         medicine = new Medicine();
-        medication = new Medication();
+        medication = new Medication(medicine, 0, 0);
     }
 }

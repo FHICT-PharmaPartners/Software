@@ -19,11 +19,6 @@ public class User {
     @Column(nullable = true)
     private String insertion;
 
-
-    public User() {
-        //empty constructor
-    }
-
     public String getId() {
 
         return id;

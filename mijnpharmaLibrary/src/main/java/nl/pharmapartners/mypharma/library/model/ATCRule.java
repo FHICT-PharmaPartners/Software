@@ -5,10 +5,6 @@ public class ATCRule {
     private String ATCCheck;
     private int operator;
 
-    public ATCRule(){
-        //nothing
-    }
-
     public ATCRule(String ATCCheck) {
         this.ATCCheck = ATCCheck;
     }

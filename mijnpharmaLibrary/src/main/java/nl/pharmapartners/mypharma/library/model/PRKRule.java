@@ -5,10 +5,6 @@ public class PRKRule {
     private String PRKCheck;
     private int operator;
 
-    public PRKRule(){
-        //nothing
-    }
-
     public PRKRule(String PRKCheck) {
         this.PRKCheck = PRKCheck;
     }

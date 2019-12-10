@@ -6,6 +6,7 @@ import nl.pharmapartners.mypharma.library.model.DurationRule;
 import nl.pharmapartners.mypharma.library.model.Medication;
 import nl.pharmapartners.mypharma.library.model.Medicine;
 import nl.pharmapartners.mypharma.library.model.Patient;
+import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,12 +33,13 @@ public class DurationTest {
     @BeforeEach
     void setUp() {
         ruleSet = new RuleSet();
-        patient = new Patient();
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
         algorithm = new Algorithm();
     }
 
     @Test
-    void testDurationFalse(){ //test anything that should return false.
+    void testDurationFalse() { //test anything that should return false.
         resetDuration();
         resetMedication();
 
@@ -55,7 +57,7 @@ public class DurationTest {
     }
 
     @Test
-    void testDurationMissingValue(){
+    void testDurationMissingValue() {
         resetDuration();
         resetMedication();
 
@@ -72,7 +74,7 @@ public class DurationTest {
     }
 
     @Test
-    void testDurationLargerThan(){ //test one rule with '>' operator. Duration cannot be larger than rule.
+    void testDurationLargerThan() { //test one rule with '>' operator. Duration cannot be larger than rule.
         resetDuration();
         resetMedication();
 
@@ -90,7 +92,7 @@ public class DurationTest {
     }
 
     @Test
-    void testDurationSmallerThan(){ //test one rule with '<' operator. Duration cannot be smaller than rule.
+    void testDurationSmallerThan() { //test one rule with '<' operator. Duration cannot be smaller than rule.
         resetDuration();
         resetMedication();
 
@@ -108,7 +110,7 @@ public class DurationTest {
     }
 
     @Test
-    void testDurationLargerOrEqualFalse(){ //test one rule with '>=' operator. Duration is equal to or larger than rule.
+    void testDurationLargerOrEqualFalse() { //test one rule with '>=' operator. Duration is equal to or larger than rule.
         resetDuration();
         resetMedication();
 
@@ -127,7 +129,7 @@ public class DurationTest {
     }
 
     @Test
-    void testDurationSmallerOrEqualFalse(){ //test one rule with '<=' operator. Duration is equal to or smaller than rule.
+    void testDurationSmallerOrEqualFalse() { //test one rule with '<=' operator. Duration is equal to or smaller than rule.
         resetDuration();
         resetMedication();
 
@@ -146,7 +148,7 @@ public class DurationTest {
     }
 
     @Test
-    void testDurationLargerOrEqualTrue(){ //test one rule with '>=' operator. Duration is smaller than rule.
+    void testDurationLargerOrEqualTrue() { //test one rule with '>=' operator. Duration is smaller than rule.
         resetDuration();
         resetMedication();
 
@@ -165,7 +167,7 @@ public class DurationTest {
     }
 
     @Test
-    void testDurationSmallerOrEqualTrue(){ //test one rule with '>=' operator. Duration is larger than rule.
+    void testDurationSmallerOrEqualTrue() { //test one rule with '>=' operator. Duration is larger than rule.
         resetDuration();
         resetMedication();
 
@@ -183,15 +185,15 @@ public class DurationTest {
         assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
     }
 
-    private void resetDuration(){
+    private void resetDuration() {
         durationRules = new ArrayList<DurationRule>();
-        durationRule = new DurationRule();
-        secondDurationRule = new DurationRule();
+        durationRule = new DurationRule(0, 0);
+        secondDurationRule = new DurationRule(0, 0);
     }
 
-    private void resetMedication(){
+    private void resetMedication() {
         medicationList = new ArrayList<Medication>();
         medicine = new Medicine();
-        medication = new Medication();
+        medication = new Medication(medicine, 0, 0);
     }
 }

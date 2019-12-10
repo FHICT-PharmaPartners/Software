@@ -3,6 +3,7 @@ package algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
+import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +30,8 @@ public class DosageTest {
     @BeforeEach
     void setUp() {
         ruleSet = new RuleSet();
-        patient = new Patient();
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
         algorithm = new Algorithm();
     }
 
@@ -183,13 +185,13 @@ public class DosageTest {
 
     private void resetDosage(){
         dosageRules = new ArrayList<DosageRule>();
-        dosageRule = new DosageRule();
-        secondDosageRule = new DosageRule();
+        dosageRule = new DosageRule(0, 0);
+        secondDosageRule = new DosageRule(0, 0);
     }
 
     private void resetMedication(){
         medicationList = new ArrayList<Medication>();
         medicine = new Medicine();
-        medication = new Medication();
+        medication = new Medication(medicine, 0, 0);
     }
 }

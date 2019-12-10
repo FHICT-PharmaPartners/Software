@@ -33,7 +33,8 @@ public class BaseTest {
         patientRules = new ArrayList<PatientRule>();
         prkRules = new ArrayList<PRKRule>();
 
-        patient = new Patient();
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
         ruleSet = new RuleSet();
 
         algorithm = new Algorithm();
@@ -124,10 +125,10 @@ public class BaseTest {
         DurationRule durationRule = new DurationRule(12, 1);
         ruleSet.getDurationRuleList().add(durationRule);
 
-        PatientRule patientRuleAge = new PatientRule();
-        PatientRule patientRuleCreatine = new PatientRule();
-        PatientRule patientRuleMeno = new PatientRule();
-        PatientRule patientRuleWeight = new PatientRule();
+        PatientRule patientRuleAge = new PatientRule(0);
+        PatientRule patientRuleCreatine = new PatientRule(0);
+        PatientRule patientRuleMeno = new PatientRule(0);
+        PatientRule patientRuleWeight = new PatientRule(0);
 
         patientRuleAge.setAge(80);
         patientRuleAge.setOperator(1);

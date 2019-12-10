@@ -3,6 +3,7 @@ package algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
+import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,11 +30,13 @@ public class PRKTest {
     @BeforeEach
     void setUp() {
         ruleSet = new RuleSet();
-        patient = new Patient();
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
         algorithm = new Algorithm();
     }
+
     @Test
-    void testNoPRK(){ //test empty rule list. Should always return true.
+    void testNoPRK() { //test empty rule list. Should always return true.
         resetPRK();
         resetMedication();
 
@@ -42,7 +45,7 @@ public class PRKTest {
     }
 
     @Test
-    void testOnePRKTrue(){ //test one PRK rule and compatible medicine.
+    void testOnePRKTrue() { //test one PRK rule and compatible medicine.
         resetPRK();
         resetMedication();
 
@@ -78,7 +81,7 @@ public class PRKTest {
     }
 
     @Test
-    void testTwoPRKTrue(){ //test multiple PRK rules with compatible medicine
+    void testTwoPRKTrue() { //test multiple PRK rules with compatible medicine
         resetPRK();
         resetMedication();
 
@@ -99,7 +102,7 @@ public class PRKTest {
     }
 
     @Test
-    void testTwoPRKFalse(){ //test multiple PRK rules with incompatible medicine.
+    void testTwoPRKFalse() { //test multiple PRK rules with incompatible medicine.
         resetPRK();
         resetMedication();
 
@@ -116,7 +119,7 @@ public class PRKTest {
         prkRule.setPRKCheck("testPRK");
 
         //add new PRK
-        PRKRule prkRule1 = new PRKRule();
+        PRKRule prkRule1 = new PRKRule("");
         prkRule1.setPRKCheck("test2");
 
         prkRules.add(prkRule1);
@@ -128,13 +131,13 @@ public class PRKTest {
 
     private void resetPRK() {
         prkRules = new ArrayList<PRKRule>();
-        prkRule = new PRKRule();
-        secondPRKRule = new PRKRule();
+        prkRule = new PRKRule("");
+        secondPRKRule = new PRKRule("");
     }
 
-    private void resetMedication(){
+    private void resetMedication() {
         medicationList = new ArrayList<Medication>();
         medicine = new Medicine();
-        medication = new Medication();
+        medication = new Medication(medicine, 0, 0);
     }
 }

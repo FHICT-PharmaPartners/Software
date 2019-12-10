@@ -12,8 +12,8 @@ public class PatientRule {
     private int creatineClearance;
     private int operator;
 
-    public PatientRule() {
-        //nothing
+    public PatientRule(int id) {
+        this.id = id;
     }
 
     public PatientRule(int id, int age, Sex sex, boolean postMenopause, int weight, int creatineClearance) {

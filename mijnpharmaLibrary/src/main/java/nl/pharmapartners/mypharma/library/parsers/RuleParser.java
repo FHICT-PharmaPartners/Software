@@ -24,7 +24,7 @@ public class RuleParser {
                 int creatineClearance = rs.getInt("CreatineClearance");
 
                 Sex sex = rs.getInt("sex") != 0 ? Sex.FEMALE : Sex.MALE;
-                boolean postMenuPause = rs.getInt("postMenoPause") != 0;
+                boolean postMenoPause = rs.getInt("postMenoPause") != 0;
 
                 rule.add(new PatientRule(id, age, sex, postMenoPause, weight, creatineClearance));
             }

@@ -30,7 +30,8 @@ public class PatientTest {
     @BeforeEach
     void setUp() {
         ruleSet = new RuleSet();
-        patient = new Patient();
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
         algorithm = new Algorithm();
     }
 
@@ -142,12 +143,13 @@ public class PatientTest {
     }
 
     private void resetPatient(){
-        patient = new Patient();
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
     }
 
     private void resetRule(){
         patientRules = new ArrayList<PatientRule>();
-        patientRule = new PatientRule();
-        secondPatientRule = new PatientRule();
+        patientRule = new PatientRule(0);
+        secondPatientRule = new PatientRule(0);
     }
 }

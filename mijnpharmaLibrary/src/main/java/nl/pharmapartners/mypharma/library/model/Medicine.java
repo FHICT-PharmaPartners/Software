@@ -19,11 +19,6 @@ public class Medicine {
     @ManyToOne
     private Prk prk;
 
-
-    public Medicine() {
-        //empty constructor
-    }
-
     public String getId() {
 
         return id;

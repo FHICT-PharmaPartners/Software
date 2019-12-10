@@ -16,10 +16,6 @@ public class Patient {
     private List<Medication> medicationList;
     private List<Advice> adviceList;
 
-    public Patient() {
-        //nothing
-    }
-
     public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance, int age) {
         //super(id, firstName, insertion, lastName, emailAddress, password);
         this.dateOfBirth = dateOfBirth;
