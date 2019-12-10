@@ -2,26 +2,29 @@ package nl.pharmapartners.mypharma.library.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Atc {
+public class DosageRule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    private String name;
+    private int dosage;
 
     public String getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public int getDosage() {
+        return dosage;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDosage(int dosage) {
+        this.dosage = dosage;
     }
 }
