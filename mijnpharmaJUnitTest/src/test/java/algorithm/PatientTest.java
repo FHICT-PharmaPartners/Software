@@ -2,7 +2,10 @@ package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
-import nl.pharmapartners.mypharma.library.model.*;
+import nl.pharmapartners.mypharma.library.model.Medication;
+import nl.pharmapartners.mypharma.library.model.Medicine;
+import nl.pharmapartners.mypharma.library.model.Patient;
+import nl.pharmapartners.mypharma.library.model.PatientRule;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -149,7 +152,7 @@ public class PatientTest {
 
     private void resetRule(){
         patientRules = new ArrayList<PatientRule>();
-        patientRule = new PatientRule(0);
-        secondPatientRule = new PatientRule(0);
+        patientRule = new PatientRule();
+        secondPatientRule = new PatientRule();
     }
 }

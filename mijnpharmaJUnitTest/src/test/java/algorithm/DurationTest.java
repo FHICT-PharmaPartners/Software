@@ -186,14 +186,14 @@ public class DurationTest {
     }
 
     private void resetDuration() {
-        durationRules = new ArrayList<DurationRule>();
-        durationRule = new DurationRule(0, 0);
-        secondDurationRule = new DurationRule(0, 0);
+        durationRules = new ArrayList<>();
+        durationRule = new DurationRule();
+        secondDurationRule = new DurationRule();
     }
 
     private void resetMedication() {
-        medicationList = new ArrayList<Medication>();
+        medicationList = new ArrayList<>();
         medicine = new Medicine();
-        medication = new Medication(medicine, 0, 0);
+        medication = new Medication();
     }
 }

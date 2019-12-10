@@ -5,11 +5,6 @@ public class DurationRule {
     private int DurationCheck;
     private int operator;
 
-    public DurationRule(int durationCheck, int operator) {
-        DurationCheck = durationCheck;
-        this.operator = operator;
-    }
-
     public int getDurationCheck() {
         return DurationCheck;
     }

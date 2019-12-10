@@ -2,7 +2,10 @@ package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
-import nl.pharmapartners.mypharma.library.model.*;
+import nl.pharmapartners.mypharma.library.model.DosageRule;
+import nl.pharmapartners.mypharma.library.model.Medication;
+import nl.pharmapartners.mypharma.library.model.Medicine;
+import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,7 +44,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(5);
+        dosageRule.setDosage(5);
         dosageRule.setOperator(1);
         dosageRules.add(dosageRule);
 
@@ -60,7 +63,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(5); //set no operator to test if algorithm catches this.
+        dosageRule.setDosage(5); //set no operator to test if algorithm catches this.
         dosageRules.add(dosageRule);
 
         //set medicine
@@ -77,7 +80,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(10);
+        dosageRule.setDosage(10);
         dosageRule.setOperator(1); // Operator: >
         dosageRules.add(dosageRule);
 
@@ -95,7 +98,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(2);
+        dosageRule.setDosage(2);
         dosageRule.setOperator(2); // Operator: <
         dosageRules.add(dosageRule);
 
@@ -113,7 +116,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(5);
+        dosageRule.setDosage(5);
         dosageRule.setOperator(3);// Operator: >=
         dosageRules.add(dosageRule);
 
@@ -132,7 +135,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(5);
+        dosageRule.setDosage(5);
         dosageRule.setOperator(4); //Operator: <=
         dosageRules.add(dosageRule);
 
@@ -151,7 +154,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(5);
+        dosageRule.setDosage(5);
         dosageRule.setOperator(3);// Operator: >=
         dosageRules.add(dosageRule);
 
@@ -170,7 +173,7 @@ public class DosageTest {
         resetMedication();
 
         //set Dosage rule
-        dosageRule.setDosageCheck(5);
+        dosageRule.setDosage(5);
         dosageRule.setOperator(4); //Operator: <=
         dosageRules.add(dosageRule);
 
@@ -184,14 +187,14 @@ public class DosageTest {
     }
 
     private void resetDosage(){
-        dosageRules = new ArrayList<DosageRule>();
-        dosageRule = new DosageRule(0, 0);
-        secondDosageRule = new DosageRule(0, 0);
+        dosageRules = new ArrayList<>();
+        dosageRule = new DosageRule();
+        secondDosageRule = new DosageRule();
     }
 
     private void resetMedication(){
-        medicationList = new ArrayList<Medication>();
+        medicationList = new ArrayList<>();
         medicine = new Medicine();
-        medication = new Medication(medicine, 0, 0);
+        medication = new Medication();
     }
 }

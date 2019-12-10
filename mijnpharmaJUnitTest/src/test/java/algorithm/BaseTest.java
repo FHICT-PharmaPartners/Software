@@ -59,7 +59,10 @@ public class BaseTest {
         Medicine secondMedicine = new Medicine();
         secondMedicine.setMedicineAtc("ATC2");
         secondMedicine.setMedicinePrk("PRK2");
-        Medication secondMedication = new Medication(secondMedicine, 10, 10);
+        Medication secondMedication = new Medication();
+        secondMedication.setMedicine(secondMedicine);
+        secondMedication.setDosage(10);
+        secondMedication.setDuration(10);
         patient.getMedicationList().add(secondMedication);
 
         boolean expected = true; // expecting pass = true
@@ -77,7 +80,10 @@ public class BaseTest {
         secondMedicine.setName("SecondTestMedicine");
         secondMedicine.setMedicineAtc("ATCCheck");
         secondMedicine.setMedicinePrk("PRK2");
-        Medication secondMedication = new Medication(secondMedicine, 10, 10);
+        Medication secondMedication = new Medication();
+        secondMedication.setMedicine(secondMedicine);
+        secondMedication.setDosage(10);
+        secondMedication.setDuration(10);
         patient.getMedicationList().add(secondMedication);
 
         boolean expected = false; // expecting pass = false
@@ -98,9 +104,12 @@ public class BaseTest {
         medicine.setMedicinePrk("PRK");
         medicine.setName("TestMedicijn");
 
-        Medication medication = new Medication(medicine, 10, 10);
+        Medication medication = new Medication();
+        medication.setMedicine(medicine);
+        medication.setDosage(10);
+        medication.setDuration(10);
 
-        patient.setMedicationList(new ArrayList<Medication>());
+        patient.setMedicationList(new ArrayList<>());
         patient.getMedicationList().add(medication);
 
         return patient;
@@ -119,16 +128,16 @@ public class BaseTest {
         PRKRule prkRule = new PRKRule("PRKCheck");
         ruleSet.getPRKRuleList().add(prkRule);
 
-        DosageRule dosageRule = new DosageRule(12, 1);
+        DosageRule dosageRule = new DosageRule();
         ruleSet.getDosageRuleList().add(dosageRule);
 
-        DurationRule durationRule = new DurationRule(12, 1);
+        DurationRule durationRule = new DurationRule();
         ruleSet.getDurationRuleList().add(durationRule);
 
-        PatientRule patientRuleAge = new PatientRule(0);
-        PatientRule patientRuleCreatine = new PatientRule(0);
-        PatientRule patientRuleMeno = new PatientRule(0);
-        PatientRule patientRuleWeight = new PatientRule(0);
+        PatientRule patientRuleAge = new PatientRule();
+        PatientRule patientRuleCreatine = new PatientRule();
+        PatientRule patientRuleMeno = new PatientRule();
+        PatientRule patientRuleWeight = new PatientRule();
 
         patientRuleAge.setAge(80);
         patientRuleAge.setOperator(1);

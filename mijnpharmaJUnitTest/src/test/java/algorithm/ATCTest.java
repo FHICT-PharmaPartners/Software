@@ -2,13 +2,15 @@ package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
-import nl.pharmapartners.mypharma.library.model.*;
+import nl.pharmapartners.mypharma.library.model.ATCRule;
+import nl.pharmapartners.mypharma.library.model.Medication;
+import nl.pharmapartners.mypharma.library.model.Medicine;
+import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -138,6 +140,6 @@ public class ATCTest {
     private void resetMedication() {
         medicationList = new ArrayList<Medication>();
         medicine = new Medicine();
-        medication = new Medication(medicine, 0, 0);
+        medication = new Medication();
     }
 }

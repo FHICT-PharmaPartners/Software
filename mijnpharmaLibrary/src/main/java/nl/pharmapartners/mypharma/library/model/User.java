@@ -20,7 +20,6 @@ public class User {
     private String insertion;
 
     public String getId() {
-
         return id;
     }
 

@@ -23,24 +23,6 @@ public class PatientRule {
     private int creatineClearance;
     private int operator;
 
-    public PatientRule(int id) {
-        this.id = id;
-    }
-
-    public PatientRule(int id, int age, Sex sex, boolean postMenopause, int weight, int creatineClearance) {
-        //set -1 as default 'empty' value
-        age = -1;
-        weight = -1;
-        creatineClearance = -1;
-
-        this.id = id;
-        this.age = age;
-        this.sex = sex;
-        this.postMenopauseCheck = postMenopause;
-        this.weight = weight;
-        this.creatineClearance = creatineClearance;
-    }
-
     public String getId() {
         return id;
     }

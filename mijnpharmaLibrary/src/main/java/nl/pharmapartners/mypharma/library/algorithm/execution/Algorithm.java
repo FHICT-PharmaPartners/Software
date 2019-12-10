@@ -22,7 +22,7 @@ public class Algorithm {
 
     public Diagnosis executeAlgorithm(RuleSet r, Patient patient) {
         this.ruleSet = r;
-        diagnosis.setIssues(new ArrayList<String>());
+        diagnosis.setIssues(new ArrayList<>());
 
         boolean atcPassed = checkATC(ruleSet.getATCRuleList(), patient.getMedicationList());
         boolean dosagePassed = checkDosage(ruleSet.getDosageRuleList(), patient.getMedicationList());
@@ -30,10 +30,11 @@ public class Algorithm {
         boolean patientPassed = checkPatient(ruleSet.getPatientRuleList(), patient);
         boolean prkPassed = checkPRK(ruleSet.getPRKRuleList(), patient.getMedicationList());
 
-        if (atcPassed && dosagePassed && durationPassed && prkPassed && patientPassed)
+        if (atcPassed && dosagePassed && durationPassed && prkPassed && patientPassed) {
             diagnosis.setPassed(true); //none failed. Passed = true;
-        else
+        } else {
             diagnosis.setPassed(false); //one or more failed to pass. Passed = false;
+        }
 
         return diagnosis;
     }
@@ -60,10 +61,10 @@ public class Algorithm {
     public boolean checkDosage(List<DosageRule> dosageRules, List<Medication> medicationList) {
         boolean passed = true;
 
-        if (dosageRules.size() > 0)
+        if (dosageRules.size() > 0) {
             for (Medication m : medicationList) {
                 for (DosageRule r : dosageRules) {
-                    if (!switchCheck(r.getDosageCheck(), m.getDosage(), r.getOperator())) {
+                    if (!switchCheck(r.getDosage(), m.getDosage(), r.getOperator())) {
                         try {
                             diagnosis.getIssues().add(m.getMedicine().getName() + " heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
@@ -73,6 +74,7 @@ public class Algorithm {
                     }
                 }
             }
+        }
         return passed; //if checklist is empty or all have passed. Return true.
     }
 
@@ -182,9 +184,7 @@ public class Algorithm {
     }
 
     private boolean checkEquals(String check, String current) {
-        if (check == current)
-            return false;
-        return true;
+        return check != current;
     }
 
     private boolean switchCheck(int check, int current, int operator) {
