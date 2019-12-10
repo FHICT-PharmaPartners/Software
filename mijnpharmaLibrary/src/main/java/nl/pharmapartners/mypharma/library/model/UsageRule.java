@@ -8,23 +8,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ATCRule {
+public class UsageRule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    private String ATCCheck;
+    private int usageDuration;
 
     public String getId() {
         return id;
     }
 
-    public String getATCCheck() {
-        return ATCCheck;
+    public int getUsageDuration() {
+        return usageDuration;
     }
 
-    public void setATCCheck(String ATCCheck) {
-        this.ATCCheck = ATCCheck;
+    public void setUsageDuration(int usageDuration) {
+        this.usageDuration = usageDuration;
     }
 }

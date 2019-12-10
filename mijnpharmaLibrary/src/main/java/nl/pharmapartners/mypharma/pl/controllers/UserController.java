@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/user")
 public class UserController {
@@ -38,6 +40,11 @@ public class UserController {
     @DeleteMapping(path = "/logout")
     public void logout(){
         //add logout method here
+    }
+
+    @GetMapping()
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
     }
 
 
