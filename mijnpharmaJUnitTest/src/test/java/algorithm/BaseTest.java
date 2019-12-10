@@ -56,14 +56,7 @@ public class BaseTest {
         ruleSet = setRuleSet(ruleSet);
 
         //add second medication
-        Medicine secondMedicine = new Medicine();
-        secondMedicine.setMedicineAtc("ATC2");
-        secondMedicine.setMedicinePrk("PRK2");
-        Medication secondMedication = new Medication();
-        secondMedication.setMedicine(secondMedicine);
-        secondMedication.setDosage(10);
-        secondMedication.setDuration(10);
-        patient.getMedicationList().add(secondMedication);
+        patient.getMedicationList().add(setSecondMedication("ATC2", "PRK2"));
 
         boolean expected = true; // expecting pass = true
         Diagnosis actual = algorithm.executeAlgorithm(ruleSet, patient);
@@ -76,19 +69,24 @@ public class BaseTest {
         ruleSet = setRuleSet(ruleSet);
 
         //add second medication
-        Medicine secondMedicine = new Medicine();
-        secondMedicine.setName("SecondTestMedicine");
-        secondMedicine.setMedicineAtc("ATCCheck");
-        secondMedicine.setMedicinePrk("PRK2");
-        Medication secondMedication = new Medication();
-        secondMedication.setMedicine(secondMedicine);
-        secondMedication.setDosage(10);
-        secondMedication.setDuration(10);
-        patient.getMedicationList().add(secondMedication);
+        patient.getMedicationList().add(setSecondMedication("ATCCheck", "PRK2"));
 
         boolean expected = false; // expecting pass = false
         Diagnosis actual = algorithm.executeAlgorithm(ruleSet, patient);
         assertEquals(expected, actual.isPassed());
+    }
+
+    private Medication setSecondMedication(String atc, String prk) {
+        Medicine secondMedicine = new Medicine();
+        secondMedicine.setName("SecondTestMedicine");
+        secondMedicine.setMedicineAtc(atc);
+        secondMedicine.setMedicinePrk(prk);
+        Medication secondMedication = new Medication();
+        secondMedication.setMedicine(secondMedicine);
+        secondMedication.setDosage(10);
+        secondMedication.setDuration(10);
+
+        return secondMedication;
     }
 
     private Patient setPatient(Patient patient) {
@@ -129,9 +127,13 @@ public class BaseTest {
         ruleSet.getPRKRuleList().add(prkRule);
 
         DosageRule dosageRule = new DosageRule();
+        dosageRule.setDosage(15);
+        dosageRule.setOperator(1);
         ruleSet.getDosageRuleList().add(dosageRule);
 
         DurationRule durationRule = new DurationRule();
+        durationRule.setDurationCheck(15);
+        durationRule.setOperator(1);
         ruleSet.getDurationRuleList().add(durationRule);
 
         PatientRule patientRuleAge = new PatientRule();
