@@ -15,6 +15,11 @@ public class PRKRule {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String PRKCheck;
+    private int operator;
+
+    public PRKRule(String PRKCheck) {
+        this.PRKCheck = PRKCheck;
+    }
 
     public String getId() {
         return id;

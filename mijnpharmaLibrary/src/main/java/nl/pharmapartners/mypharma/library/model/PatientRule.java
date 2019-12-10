@@ -17,9 +17,11 @@ public class PatientRule {
     private String id;
     private int age;
     private Sex sex;
-    private boolean postMenoPause;
+    private boolean postMenopauseCheck;
+    private boolean isPostMenoPause;
     private int weight;
     private int creatineClearance;
+    private int operator;
 
     public String getId() {
         return id;
@@ -33,20 +35,28 @@ public class PatientRule {
         this.age = age;
     }
 
-    public Sex getGender() {
+    public Sex getSex() {
         return sex;
     }
 
-    public void setGender(Sex gender) {
-        this.sex = gender;
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
+    public boolean isPostMenopauseCheck() {
+        return postMenopauseCheck;
+    }
+
+    public void setPostMenopauseCheck(boolean postMenopauseCheck) {
+        this.postMenopauseCheck = postMenopauseCheck;
     }
 
     public boolean isPostMenoPause() {
-        return postMenoPause;
+        return isPostMenoPause;
     }
 
     public void setPostMenoPause(boolean postMenoPause) {
-        this.postMenoPause = postMenoPause;
+        isPostMenoPause = postMenoPause;
     }
 
     public int getWeight() {
@@ -63,5 +73,13 @@ public class PatientRule {
 
     public void setCreatineClearance(int creatineClearance) {
         this.creatineClearance = creatineClearance;
+    }
+
+    public int getOperator() {
+        return operator;
+    }
+
+    public void setOperator(int operator) {
+        this.operator = operator;
     }
 }

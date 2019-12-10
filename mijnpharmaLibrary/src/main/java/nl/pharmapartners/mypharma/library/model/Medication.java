@@ -5,12 +5,6 @@ public class Medication {
     private int dosage;
     private int duration;
 
-    public Medication(Medicine medicine, int dosage, int duration) {
-        this.medicine = medicine;
-        this.dosage = dosage;
-        this.duration = duration;
-    }
-
     public Medicine getMedicine() {
         return medicine;
     }

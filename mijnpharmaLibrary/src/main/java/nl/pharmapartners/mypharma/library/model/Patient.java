@@ -11,8 +11,20 @@ public class Patient {
     private double weight;
     private Sex sex;
     private int creatineClearance;
+    private int age;
+    private boolean postMenoPause;
     private List<Medication> medicationList;
     private List<Advice> adviceList;
+
+    public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance, int age) {
+        //super(id, firstName, insertion, lastName, emailAddress, password);
+        this.dateOfBirth = dateOfBirth;
+        this.height = height;
+        this.weight = weight;
+        this.sex = sex;
+        this.creatineClearance = creatineClearance;
+        this.age = age;
+    }
 
     public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance) {
         this.dateOfBirth = dateOfBirth;
@@ -50,7 +62,7 @@ public class Patient {
         return sex;
     }
 
-    public void setSex(Sex gender) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 
@@ -60,6 +72,22 @@ public class Patient {
 
     public void setCreatineClearance(int creatineClearance) {
         this.creatineClearance = creatineClearance;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean getPostMenoPause() {
+        return postMenoPause;
+    }
+
+    public void setPostMenoPause(boolean postMenoPause) {
+        this.postMenoPause = postMenoPause;
     }
 
     public List<Medication> getMedicationList() {

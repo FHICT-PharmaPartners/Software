@@ -13,6 +13,8 @@ public class Medicine {
     private String id;
     private String name;
     private String description;
+    private String medicineAtc;
+    private String medicinePrk;
 
     @ManyToOne
     private Prk prk;
@@ -21,6 +23,7 @@ public class Medicine {
     private Atc atc;
 
     public String getId() {
+
         return id;
     }
 
@@ -40,13 +43,30 @@ public class Medicine {
         this.description = description;
     }
 
+    public String getMedicineAtc() {
+        return medicineAtc;
+    }
+
+    public void setMedicineAtc(String atc) {
+        this.medicineAtc = atc;
+    }
+
+    public String getMedicinePrk() {
+        return medicinePrk;
+    }
+
+    public void setMedicinePrk(String prk) {
+
+        this.medicinePrk = prk;
+    }
+  
     public Prk getPrk() {
         return prk;
     }
-
-    public void setPrk(Prk prk) {
-        this.prk = prk;
-    }
+  
+    public void setPrk(Prk prk){
+      this.prk = prk;
+    }  
 
     public Atc getAtc() {
         return atc;
