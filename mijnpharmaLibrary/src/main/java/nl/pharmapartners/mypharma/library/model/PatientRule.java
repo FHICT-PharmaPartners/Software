@@ -1,21 +1,28 @@
 package nl.pharmapartners.mypharma.library.model;
 
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class PatientRule {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     private int age;
     private Sex sex;
     private boolean postMenoPause;
     private int weight;
     private int creatineClearance;
 
-    public int getId() {
+    public String getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getAge() {
