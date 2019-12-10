@@ -332,3 +332,4 @@ ASALocalRun/
 mijnpharmaJUnitTest/target/
 mijnpharmaLibrary/target/
 mijnpharmaLibrary/src/resources/db.properties
+mijnpharmaLibrary/src/main/resources/application.properties
