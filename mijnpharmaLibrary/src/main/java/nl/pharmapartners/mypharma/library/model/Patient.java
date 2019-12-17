@@ -13,7 +13,7 @@ public class Patient {
     private int creatineClearance;
     private int age;
     private boolean postMenoPause;
-    private List<Medication> medicationList;
+    private List<PatientMedicine> medicineList;
     private List<Advice> adviceList;
 
     public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance, int age) {
@@ -90,12 +90,12 @@ public class Patient {
         this.postMenoPause = postMenoPause;
     }
 
-    public List<Medication> getMedicationList() {
-        return medicationList;
+    public List<PatientMedicine> getMedicineList() {
+        return medicineList;
     }
 
-    public void setMedicationList(List<Medication> medicationList) {
-        this.medicationList = medicationList;
+    public void setMedicineList(List<PatientMedicine> medicineList) {
+        this.medicineList = medicineList;
     }
 
     public List<Advice> getAdviceList() {

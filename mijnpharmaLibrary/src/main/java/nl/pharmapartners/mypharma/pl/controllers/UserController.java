@@ -1,6 +1,7 @@
 package nl.pharmapartners.mypharma.pl.controllers;
 
 import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
+import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -31,6 +32,13 @@ public class UserController {
         userRepository.save(user);
     }
 
+    //do not remove
+//    @GetMapping(value = "/{id}")
+//    public Patient getUser(){
+//        //aaahhh
+//        return new Patient();
+//    }
+
     //logs user in to the system
     @PostMapping(path = "/login")
     public void login(@PathVariable String emailAddress, @PathVariable String password){
@@ -46,6 +54,4 @@ public class UserController {
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
-
-
 }

@@ -20,15 +20,15 @@ public class Algorithm {
      * 4: '<='
      */
 
-    public Diagnosis executeAlgorithm(RuleSet r, Patient patient) {
+    public Diagnosis run(RuleSet r, Patient patient) {
         this.ruleSet = r;
         diagnosis.setIssues(new ArrayList<>());
 
-        boolean atcPassed = checkATC(ruleSet.getATCRuleList(), patient.getMedicationList());
-        boolean dosagePassed = checkDosage(ruleSet.getDosageRuleList(), patient.getMedicationList());
-        boolean durationPassed = checkDuration(ruleSet.getDurationRuleList(), patient.getMedicationList());
+        boolean atcPassed = checkATC(ruleSet.getATCRuleList(), patient.getMedicineList());
+        boolean dosagePassed = checkDosage(ruleSet.getDosageRuleList(), patient.getMedicineList());
+        boolean durationPassed = checkDuration(ruleSet.getDurationRuleList(), patient.getMedicineList());
         boolean patientPassed = checkPatient(ruleSet.getPatientRuleList(), patient);
-        boolean prkPassed = checkPRK(ruleSet.getPRKRuleList(), patient.getMedicationList());
+        boolean prkPassed = checkPRK(ruleSet.getPRKRuleList(), patient.getMedicineList());
 
         if (atcPassed && dosagePassed && durationPassed && prkPassed && patientPassed) {
             diagnosis.setPassed(true); //none failed. Passed = true;
@@ -39,11 +39,11 @@ public class Algorithm {
         return diagnosis;
     }
 
-    public boolean checkATC(List<ATCRule> atcRules, List<Medication> medicationList) {
+    public boolean checkATC(List<ATCRule> atcRules, List<PatientMedicine> medicationList) {
         boolean passed = true;
 
         if (atcRules.size() > 0) //check if rule list contains any objects
-            for (Medication m : medicationList) { //loop through all medication that is currently used
+            for (PatientMedicine m : medicationList) { //loop through all medication that is currently used
                 for (ATCRule r : atcRules) { //loop through all rules for each medicine that is used
                     if (!checkEquals(r.getATCCheck(), m.getMedicine().getMedicineAtc())) { //check if any atc match using checkEquals().
                         try {
@@ -58,11 +58,11 @@ public class Algorithm {
         return passed; //if checklist is empty or all have passed. Return true.
     }
 
-    public boolean checkDosage(List<DosageRule> dosageRules, List<Medication> medicationList) {
+    public boolean checkDosage(List<DosageRule> dosageRules, List<PatientMedicine> medicationList) {
         boolean passed = true;
 
         if (dosageRules.size() > 0) {
-            for (Medication m : medicationList) {
+            for (PatientMedicine m : medicationList) {
                 for (DosageRule r : dosageRules) {
                     if (!switchCheck(r.getDosage(), m.getDosage(), r.getOperator())) {
                         try {
@@ -78,13 +78,13 @@ public class Algorithm {
         return passed; //if checklist is empty or all have passed. Return true.
     }
 
-    public boolean checkDuration(List<DurationRule> durationRules, List<Medication> medicationList) {
+    public boolean checkDuration(List<DurationRule> durationRules, List<PatientMedicine> medicationList) {
         boolean passed = true;
 
         if (durationRules.size() > 0)
-            for (Medication m : medicationList) {
+            for (PatientMedicine m : medicationList) {
                 for (DurationRule r : durationRules) {
-                    if (!switchCheck(r.getDurationCheck(), m.getDuration(), r.getOperator())) {
+                    if (!switchCheck(r.getDurationCheck(), m.getUsageDuration(), r.getOperator())) {
                         try {
                             diagnosis.getIssues().add(m.getMedicine().getName() + " heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
@@ -120,7 +120,7 @@ public class Algorithm {
                     }
                 }
                 if (sex != null) {
-                    if (sex.toString() != patient.getSex().toString()) {
+                    if (!sex.toString().equals(patient.getSex().toString())) {
                         try {
                             diagnosis.getIssues().add("Uw geslacht heeft een conflict veroorzaakt met " + ruleSet.getMfb().getName());
                         } catch (Exception e) {
@@ -164,11 +164,11 @@ public class Algorithm {
         return passed; //if checklist is empty or all have passed. Return true.
     }
 
-    public boolean checkPRK(List<PRKRule> prkRules, List<Medication> medicationList) {
+    public boolean checkPRK(List<PRKRule> prkRules, List<PatientMedicine> medicationList) {
         boolean passed = true;
 
         if (prkRules.size() > 0)
-            for (Medication m : medicationList) {
+            for (PatientMedicine m : medicationList) {
                 for (PRKRule r : prkRules) {
                     if (!checkEquals(r.getPRKCheck(), m.getMedicine().getMedicinePrk())) {
                         try {
@@ -184,7 +184,7 @@ public class Algorithm {
     }
 
     private boolean checkEquals(String check, String current) {
-        return check != current;
+        return !check.equals(current);
     }
 
     private boolean switchCheck(int check, int current, int operator) {

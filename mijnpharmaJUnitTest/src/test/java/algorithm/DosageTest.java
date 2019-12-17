@@ -1,12 +1,9 @@
 package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
-import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
 import nl.pharmapartners.mypharma.library.model.DosageRule;
-import nl.pharmapartners.mypharma.library.model.Medication;
 import nl.pharmapartners.mypharma.library.model.Medicine;
-import nl.pharmapartners.mypharma.library.model.Patient;
-import nl.pharmapartners.mypharma.library.model.enums.Sex;
+import nl.pharmapartners.mypharma.library.model.PatientMedicine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,12 +14,10 @@ import static org.junit.Assert.assertEquals;
 
 public class DosageTest {
     private Algorithm algorithm;
-    private RuleSet ruleSet;
-    private Patient patient;
 
     //create medicine
-    private List<Medication> medicationList;
-    private Medication medication;
+    private List<PatientMedicine> medicationList;
+    private PatientMedicine patientMedicine;
     private Medicine medicine;
 
     //create dosage and rule
@@ -32,9 +27,6 @@ public class DosageTest {
 
     @BeforeEach
     void setUp() {
-        ruleSet = new RuleSet();
-        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
-                null, 170, 70, Sex.MALE, 10, 75);
         algorithm = new Algorithm();
     }
 
@@ -49,8 +41,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(10);
-        medicationList.add(medication);
+        patientMedicine.setDosage(10);
+        medicationList.add(patientMedicine);
 
         boolean expected = false;
         boolean test = algorithm.checkDosage(dosageRules, medicationList);
@@ -67,8 +59,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(10);
-        medicationList.add(medication);
+        patientMedicine.setDosage(10);
+        medicationList.add(patientMedicine);
 
         boolean expected = false;
         assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
@@ -85,8 +77,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(5);
-        medicationList.add(medication);
+        patientMedicine.setDosage(5);
+        medicationList.add(patientMedicine);
 
         boolean expected = true;
         assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
@@ -103,8 +95,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(5);
-        medicationList.add(medication);
+        patientMedicine.setDosage(5);
+        medicationList.add(patientMedicine);
 
         boolean expected = true;
         assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
@@ -121,8 +113,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(6);
-        medicationList.add(medication);
+        patientMedicine.setDosage(6);
+        medicationList.add(patientMedicine);
 
         boolean expected = false; //false since Dosage is equal to rule.
         boolean test = algorithm.checkDosage(dosageRules, medicationList);
@@ -140,8 +132,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(4);
-        medicationList.add(medication);
+        patientMedicine.setDosage(4);
+        medicationList.add(patientMedicine);
 
         boolean expected = false; //false since Dosage is equal to rule.
         boolean test = algorithm.checkDosage(dosageRules, medicationList);
@@ -159,8 +151,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(4);
-        medicationList.add(medication);
+        patientMedicine.setDosage(4);
+        medicationList.add(patientMedicine);
 
         boolean expected = true; //true since Dosage is smaller than rule.
         boolean test = algorithm.checkDosage(dosageRules, medicationList);
@@ -178,8 +170,8 @@ public class DosageTest {
         dosageRules.add(dosageRule);
 
         //set medicine
-        medication.setDosage(6);
-        medicationList.add(medication);
+        patientMedicine.setDosage(6);
+        medicationList.add(patientMedicine);
 
         boolean expected = true; //true since Dosage is larger than rule.
         boolean test = algorithm.checkDosage(dosageRules, medicationList);
@@ -195,6 +187,6 @@ public class DosageTest {
     private void resetMedication(){
         medicationList = new ArrayList<>();
         medicine = new Medicine();
-        medication = new Medication();
+        patientMedicine = new PatientMedicine();
     }
 }

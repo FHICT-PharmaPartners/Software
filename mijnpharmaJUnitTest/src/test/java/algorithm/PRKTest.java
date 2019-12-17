@@ -2,10 +2,7 @@ package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
-import nl.pharmapartners.mypharma.library.model.Medication;
-import nl.pharmapartners.mypharma.library.model.Medicine;
-import nl.pharmapartners.mypharma.library.model.PRKRule;
-import nl.pharmapartners.mypharma.library.model.Patient;
+import nl.pharmapartners.mypharma.library.model.*;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,12 +14,12 @@ import static org.junit.Assert.assertEquals;
 
 public class PRKTest {
     private Algorithm algorithm;
-    private RuleSet ruleSet;
-    private Patient patient;
+//    private RuleSet ruleSet;
+//    private Patient patient;
 
     //create medicine
-    private List<Medication> medicationList;
-    private Medication medication;
+    private List<PatientMedicine> medicationList;
+    private PatientMedicine patientMedicine;
     private Medicine medicine;
 
     //create prk and rule
@@ -32,9 +29,9 @@ public class PRKTest {
 
     @BeforeEach
     void setUp() {
-        ruleSet = new RuleSet();
-        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
-                null, 170, 70, Sex.MALE, 10, 75);
+//        ruleSet = new RuleSet();
+//        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+//                null, 170, 70, Sex.MALE, 10, 75);
         algorithm = new Algorithm();
     }
 
@@ -58,8 +55,8 @@ public class PRKTest {
 
         //set medicine
         medicine.setMedicinePrk("testMedicine");
-        medication.setMedicine(medicine);
-        medicationList.add(medication);
+        patientMedicine.setMedicine(medicine);
+        medicationList.add(patientMedicine);
 
         boolean expected = true;
         assertEquals(expected, algorithm.checkPRK(prkRules, medicationList));
@@ -76,8 +73,8 @@ public class PRKTest {
 
         //set medicine
         medicine.setMedicinePrk("testFalse");
-        medication.setMedicine(medicine);
-        medicationList.add(medication);
+        patientMedicine.setMedicine(medicine);
+        medicationList.add(patientMedicine);
 
         boolean expected = false;
         assertEquals(expected, algorithm.checkPRK(prkRules, medicationList));
@@ -96,8 +93,8 @@ public class PRKTest {
 
         //set medicine
         medicine.setMedicinePrk("test");
-        medication.setMedicine(medicine);
-        medicationList.add(medication);
+        patientMedicine.setMedicine(medicine);
+        medicationList.add(patientMedicine);
 
         //should return true, no PRK should match
         boolean expected = true;
@@ -113,11 +110,11 @@ public class PRKTest {
         String prk = "testPRK";
         prkRule.setPRKCheck(prk);
         medicine.setMedicinePrk(prk);
-        medication.setMedicine(medicine);
+        patientMedicine.setMedicine(medicine);
 
         //add both to list
         prkRules.add(prkRule);
-        medicationList.add(medication);
+        medicationList.add(patientMedicine);
 
         prkRule.setPRKCheck("testPRK");
 
@@ -141,6 +138,6 @@ public class PRKTest {
     private void resetMedication() {
         medicationList = new ArrayList<>();
         medicine = new Medicine();
-        medication = new Medication();
+        patientMedicine = new PatientMedicine();
     }
 }

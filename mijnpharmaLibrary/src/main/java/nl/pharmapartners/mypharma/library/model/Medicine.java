@@ -23,7 +23,6 @@ public class Medicine {
     private Atc atc;
 
     public String getId() {
-
         return id;
     }
 
@@ -74,6 +73,10 @@ public class Medicine {
 
     public void setAtc(Atc atc) {
         this.atc = atc;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 
