@@ -25,11 +25,10 @@ public class MedicineController {
         return medicineRepository.findAll();
     }
 
-    @GetMapping(value = "/getByName/{name}")
-    public Optional<Medicine> getMedicineByName(@PathVariable String name){
-        //doesn't work, needs custom method
-        return medicineRepository.findById(name);
-    }
+//    @GetMapping(value = "/getByName/{name}")
+//    public List<Medicine> getMedicineByName(@PathVariable String name){
+//        return medicineRepository.findby(name);
+//    }
 
     @GetMapping(value = "/getById/{id}")
     public Optional<Medicine> getMedicineById(@PathVariable("id") String id){
@@ -37,7 +36,7 @@ public class MedicineController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addUser(@RequestBody Medicine medicine){
+    public void addMedicine(@RequestBody Medicine medicine){
         medicineRepository.save(medicine);
     }
 }
