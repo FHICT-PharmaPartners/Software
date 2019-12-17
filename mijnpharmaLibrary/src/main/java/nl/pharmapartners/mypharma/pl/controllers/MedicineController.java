@@ -27,7 +27,7 @@ public class MedicineController {
 
     @GetMapping(value = "/getByName/{name}")
     public List<Medicine> getMedicineByName(@PathVariable String name){
-        return medicineRepository.findByMedicineContaining(name);
+        return null;
     }
 
     @GetMapping(value = "/getById/{id}")
