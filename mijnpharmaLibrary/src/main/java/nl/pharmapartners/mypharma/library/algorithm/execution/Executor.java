@@ -1,11 +1,7 @@
 package nl.pharmapartners.mypharma.library.algorithm.execution;
 
-import javafx.css.Rule;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
-import nl.pharmapartners.mypharma.library.model.Diagnosis;
-import nl.pharmapartners.mypharma.library.model.Patient;
-import nl.pharmapartners.mypharma.library.model.PatientMedicine;
-import nl.pharmapartners.mypharma.library.model.PatientRule;
+import nl.pharmapartners.mypharma.library.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +9,10 @@ import java.util.List;
 public class Executor {
     private Algorithm algorithm;
     private Patient patient;
+    private List<RuleSet> ruleSets;
 
-    public Executor(Patient patient) {
+    public Executor(List<RuleSet> ruleSets, Patient patient) {
+        this.ruleSets = ruleSets;
         this.patient = patient;
         algorithm = new Algorithm();
     }
@@ -31,7 +29,6 @@ public class Executor {
         }
 
         //merge diagnoses to one final diagnosis
-        //issues worden niet overgezet
         for (Diagnosis d : diagnoses){
             if(!d.isPassed()){
                 finalDiagnosis.setPassed(false);
@@ -43,31 +40,11 @@ public class Executor {
     }
 
     private RuleSet getRuleSet(String id){
-        /**
-         * Get ruleset by medicine id
-         */
-
-        //hardcoded ruleset for demo REMOVE ASAP
-        RuleSet ruleSet = new RuleSet();
-        ruleSet.setATCRuleList(new ArrayList<>());
-        ruleSet.setDosageRuleList(new ArrayList<>());
-        ruleSet.setDurationRuleList(new ArrayList<>());
-        ruleSet.setPRKRuleList(new ArrayList<>());
-        List<PatientRule> patientRules = new ArrayList<>();
-        PatientRule patientRule = new PatientRule();
-        PatientRule patientRule2 = new PatientRule();
-
-        patientRule.setAge(75);
-        patientRule.setOperator(1);
-
-        patientRule2.setWeight(80);
-        patientRule2.setOperator(1);
-
-        patientRules.add(patientRule);
-        patientRules.add(patientRule2);
-
-        ruleSet.setPatientRuleList(patientRules);
-
-        return ruleSet;
+        for (RuleSet r : ruleSets){
+            if (r.getMedicineId().equals(id)){
+                return r;
+            }
+        }
+        return null;
     }
 }

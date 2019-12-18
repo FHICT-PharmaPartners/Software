@@ -5,8 +5,8 @@ import nl.pharmapartners.mypharma.library.model.*;
 import java.util.List;
 
 public class RuleSet {
-    private int MFBId;
-    private MFB mfb;
+    private String medicineId;
+    private String name;
     private Patient patient;
     private List<PatientRule> patientRuleList;
     private List<PRKRule> PRKRuleList;
@@ -79,19 +79,19 @@ public class RuleSet {
         this.ATCRuleList = ATCRuleList;
     }
 
-    public int getMFBId() {
-        return MFBId;
+    public String getMedicineId() {
+        return medicineId;
     }
 
-    public void setMFBId(int MFBId) {
-        this.MFBId = MFBId;
+    public void setMedicineId(String medicineId) {
+        this.medicineId = medicineId;
     }
 
-    public MFB getMfb() {
-        return mfb;
+    public String getName() {
+        return name;
     }
 
-    public void setMfb(MFB mfb) {
-        this.mfb = mfb;
+    public void setName(String name) {
+        this.name = name;
     }
 }

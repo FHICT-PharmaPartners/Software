@@ -4,8 +4,11 @@ import nl.pharmapartners.mypharma.library.model.enums.Sex;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class Patient {
+    private Optional<User> user;
+    private String id;
     private Date dateOfBirth;
     private double height;
     private double weight;
@@ -32,6 +35,10 @@ public class Patient {
         this.weight = weight;
         this.sex = sex;
         this.creatineClearance = creatineClearance;
+    }
+
+    public Patient() {
+
     }
 
     public Date getDateOfBirth() {
@@ -104,5 +111,21 @@ public class Patient {
 
     public void setAdviceList(List<Advice> adviceList) {
         this.adviceList = adviceList;
+    }
+
+    public Optional<User> getUser() {
+        return user;
+    }
+
+    public void setUser(Optional<User> user) {
+        this.user = user;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

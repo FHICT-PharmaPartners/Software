@@ -18,6 +18,15 @@ public class BaseTest {
 
     private Algorithm algorithm;
 
+    @BeforeEach
+    void setUp() {
+        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
+                null, 170, 70, Sex.MALE, 10, 75);
+        ruleSet = new RuleSet();
+
+        algorithm = new Algorithm();
+    }
+
     @Test
     void testPatientOneMedicinePass() { // test a simulated patient with one medicine
         setPatient(patient);
@@ -26,15 +35,6 @@ public class BaseTest {
         boolean expected = true; // expecting pass = true
         Diagnosis actual = algorithm.run(ruleSet, patient);
         assertEquals(expected, actual.isPassed());
-    }
-
-    @BeforeEach
-    void setUp() {
-        patient = new Patient(1, "Testpatient", "", "Testpatient", "", "",
-                null, 170, 70, Sex.MALE, 10, 75);
-        ruleSet = new RuleSet();
-
-        algorithm = new Algorithm();
     }
 
     @Test
@@ -143,7 +143,7 @@ public class BaseTest {
         ruleSet.getPatientRuleList().add(patientRuleMeno);
         ruleSet.getPatientRuleList().add(patientRuleWeight);
 
-        MFB mfb = new MFB(1, "TestMFB", "T-1");
-        ruleSet.setMfb(mfb);
+        ruleSet.setName("TestMFB");
+        ruleSet.setMedicineId("42069");
     }
 }
