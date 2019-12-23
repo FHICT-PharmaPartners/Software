@@ -75,6 +75,14 @@ public class Medicine {
     public void setAtc(Atc atc) {
         this.atc = atc;
     }
+
+    public Atc getAtc() {
+        return atc;
+    }
+
+    public void setAtc(Atc atc) {
+        this.atc = atc;
+    }
 }
 
 
