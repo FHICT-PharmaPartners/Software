@@ -1,7 +1,7 @@
 package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
-import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
+import nl.pharmapartners.mypharma.library.model.RuleSet;
 import nl.pharmapartners.mypharma.library.model.Medication;
 import nl.pharmapartners.mypharma.library.model.Medicine;
 import nl.pharmapartners.mypharma.library.model.Patient;

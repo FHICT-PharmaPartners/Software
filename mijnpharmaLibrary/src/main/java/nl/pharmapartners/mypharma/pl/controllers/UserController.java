@@ -1,18 +1,23 @@
 package nl.pharmapartners.mypharma.pl.controllers;
 
+import nl.pharmapartners.mypharma.library.dal.repository.PatientMedicineRepository;
 import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
+import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/user")
 public class UserController {
 
     private UserRepository userRepository;
+    private PatientMedicineRepository patientRepository;
 
     @Autowired
     private void setUserRepository(UserRepository userRepository){
@@ -35,11 +40,4 @@ public class UserController {
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
-
-    @GetMapping()
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
-    }
-
-
 }
