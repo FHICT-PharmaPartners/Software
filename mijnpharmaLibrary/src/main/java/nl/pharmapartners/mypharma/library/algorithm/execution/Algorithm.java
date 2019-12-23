@@ -1,6 +1,6 @@
 package nl.pharmapartners.mypharma.library.algorithm.execution;
 
-import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
+import nl.pharmapartners.mypharma.library.model.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 

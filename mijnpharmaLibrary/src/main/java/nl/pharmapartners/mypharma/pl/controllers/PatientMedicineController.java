@@ -1,13 +1,11 @@
 package nl.pharmapartners.mypharma.pl.controllers;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Executor;
-import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
+import nl.pharmapartners.mypharma.library.model.RuleSet;
 import nl.pharmapartners.mypharma.library.dal.repository.PatientMedicineRepository;
 import nl.pharmapartners.mypharma.library.dal.repository.PatientRepository;
 import nl.pharmapartners.mypharma.library.dal.repository.RuleSetRepository;
-import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
 import nl.pharmapartners.mypharma.library.model.Diagnosis;
-import nl.pharmapartners.mypharma.library.model.Medication;
 import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.PatientMedicine;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/patientMedicine")

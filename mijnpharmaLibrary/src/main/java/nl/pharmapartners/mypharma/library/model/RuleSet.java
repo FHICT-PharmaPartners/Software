@@ -1,4 +1,4 @@
-package nl.pharmapartners.mypharma.library.algorithm.models;
+package nl.pharmapartners.mypharma.library.model;
 
 import nl.pharmapartners.mypharma.library.model.*;
 import org.hibernate.annotations.GenericGenerator;

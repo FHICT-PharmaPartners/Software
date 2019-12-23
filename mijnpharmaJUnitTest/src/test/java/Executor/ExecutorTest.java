@@ -1,7 +1,7 @@
 package Executor;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Executor;
-import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
+import nl.pharmapartners.mypharma.library.model.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
