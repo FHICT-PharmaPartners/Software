@@ -31,15 +31,9 @@ public class UserController {
         userRepository.save(user);
     }
 
-    //logs user in to the system
-    @PostMapping(path = "/login")
-    public void login(@PathVariable String emailAddress, @PathVariable String password){
-        //add login method here
-    }
-
-    @DeleteMapping(path = "/logout")
-    public void logout(){
-        //add logout method here
+    @GetMapping()
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
     }
 
     @GetMapping()

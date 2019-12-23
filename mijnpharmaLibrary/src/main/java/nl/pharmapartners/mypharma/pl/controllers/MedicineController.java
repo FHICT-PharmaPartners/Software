@@ -25,10 +25,10 @@ public class MedicineController {
         return medicineRepository.findAll();
     }
 
-//    @GetMapping(value = "/getByName/{name}")
-//    public List<Medicine> getMedicineByName(@PathVariable String name){
-//        return medicineRepository.findby(name);
-//    }
+    @GetMapping(value = "/getByName/{name}")
+    public List<Medicine> getMedicineByName(@PathVariable String name){
+        return null;
+    }
 
     @GetMapping(value = "/getById/{id}")
     public Optional<Medicine> getMedicineById(@PathVariable("id") String id){

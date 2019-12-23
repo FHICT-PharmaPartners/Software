@@ -15,6 +15,11 @@ public class ATCRule {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String ATCCheck;
+    private int operator;
+
+    public ATCRule(String ATCCheck) {
+        this.ATCCheck = ATCCheck;
+    }
 
     public String getId() {
         return id;
@@ -26,5 +31,13 @@ public class ATCRule {
 
     public void setATCCheck(String ATCCheck) {
         this.ATCCheck = ATCCheck;
+    }
+
+    public int getOperator() {
+        return operator;
+    }
+
+    public void setOperator(int operator) {
+        this.operator = operator;
     }
 }

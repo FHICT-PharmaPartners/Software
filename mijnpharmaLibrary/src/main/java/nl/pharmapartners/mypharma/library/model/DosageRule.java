@@ -15,6 +15,7 @@ public class DosageRule {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private int dosage;
+    private int operator;
 
     public String getId() {
         return id;
@@ -26,5 +27,13 @@ public class DosageRule {
 
     public void setDosage(int dosage) {
         this.dosage = dosage;
+    }
+
+    public int getOperator() {
+        return operator;
+    }
+
+    public void setOperator(int operator) {
+        this.operator = operator;
     }
 }
