@@ -36,10 +36,6 @@ public class Patient {
         this.age = age;
     }
 
-    public Patient() {
-
-    }
-
     public String getId() {
         return id;
     }
