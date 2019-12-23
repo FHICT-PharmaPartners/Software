@@ -1,14 +1,19 @@
 package nl.pharmapartners.mypharma.library.model;
 
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
+@Entity
 public class Patient {
-    private Optional<User> user;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
+//    private Optional<User> user;
     private Date dateOfBirth;
     private double height;
     private double weight;
@@ -16,7 +21,9 @@ public class Patient {
     private int creatineClearance;
     private int age;
     private boolean postMenoPause;
+    @OneToMany
     private List<PatientMedicine> medicineList;
+    @OneToMany
     private List<Advice> adviceList;
 
     public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance, int age) {
@@ -29,16 +36,16 @@ public class Patient {
         this.age = age;
     }
 
-    public Patient(int id, String firstName, String insertion, String lastName, String emailAddress, String password, Date dateOfBirth, double height, double weight, Sex sex, int creatineClearance) {
-        this.dateOfBirth = dateOfBirth;
-        this.height = height;
-        this.weight = weight;
-        this.sex = sex;
-        this.creatineClearance = creatineClearance;
-    }
-
     public Patient() {
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getDateOfBirth() {
@@ -53,7 +60,7 @@ public class Patient {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
@@ -61,7 +68,7 @@ public class Patient {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -89,7 +96,7 @@ public class Patient {
         this.age = age;
     }
 
-    public boolean getPostMenoPause() {
+    public boolean isPostMenoPause() {
         return postMenoPause;
     }
 
@@ -111,21 +118,5 @@ public class Patient {
 
     public void setAdviceList(List<Advice> adviceList) {
         this.adviceList = adviceList;
-    }
-
-    public Optional<User> getUser() {
-        return user;
-    }
-
-    public void setUser(Optional<User> user) {
-        this.user = user;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

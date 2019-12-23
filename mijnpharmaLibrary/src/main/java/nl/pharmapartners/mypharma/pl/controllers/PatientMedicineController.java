@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/patientmedicine")
+@RequestMapping("/patientMedicine")
 public class PatientMedicineController {
 
     private PatientMedicineRepository patientMedicineRepository;
@@ -29,8 +29,12 @@ public class PatientMedicineController {
     private RuleSetRepository ruleSetRepository;
 
     @Autowired
-    private void setPatientMedicineRepository(PatientMedicineRepository patientMedicineRepository) {
+    private void setPatientMedicineRepository(PatientMedicineRepository patientMedicineRepository,
+                                              PatientRepository patientRepository,
+                                              RuleSetRepository ruleSetRepository) {
         this.patientMedicineRepository = patientMedicineRepository;
+        this.patientRepository = patientRepository;
+        this.ruleSetRepository = ruleSetRepository;
     }
 
     @GetMapping()
@@ -38,11 +42,13 @@ public class PatientMedicineController {
         return patientMedicineRepository.findAll();
     }
 
-    @GetMapping(value = "/checkAllById/{id}")
+    @GetMapping(value = "/checkAllMedicine/{id}")
     public Diagnosis checkAllMedicine(@PathVariable String id) {
         List<RuleSet> ruleSets = new ArrayList<>();
+        //get patient
         Patient patient = patientRepository.findById(id).get();
-        for (PatientMedicine m : patient.getMedicineList()){
+        //get rulesets for all medication
+        for (PatientMedicine m : patient.getMedicineList()) {
             ruleSets.add(ruleSetRepository.findById(m.getMedicine().getId()).get());
         }
         Executor executor = new Executor(ruleSets, patient);

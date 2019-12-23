@@ -151,7 +151,7 @@ public class Algorithm {
                 }
                 if (patient.getSex() == Sex.FEMALE)
                     if (menoPauseCheck) {
-                        if (r.isPostMenoPause() != patient.getPostMenoPause()) {
+                        if (r.isPostMenoPause() != patient.isPostMenoPause()) {
                             try {
                                 diagnosis.getIssues().add("De overgang heeft een conflict veroorzaakt met " + ruleSet.getName());
                             } catch (Exception e) {

@@ -1,17 +1,28 @@
 package nl.pharmapartners.mypharma.library.algorithm.models;
 
 import nl.pharmapartners.mypharma.library.model.*;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class RuleSet {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     private String medicineId;
     private String name;
-    private Patient patient;
+    @OneToMany
     private List<PatientRule> patientRuleList;
+    @OneToMany
     private List<PRKRule> PRKRuleList;
+    @OneToMany
     private List<DosageRule> dosageRuleList;
+    @OneToMany
     private List<DurationRule> durationRuleList;
+    @OneToMany
     private List<ATCRule> ATCRuleList;
 
     public RuleSet() {
@@ -22,21 +33,6 @@ public class RuleSet {
         this.patientRuleList = patientRuleList;
         this.PRKRuleList = PRKRuleList;
         this.ATCRuleList = ATCRuleList;
-    }
-
-    public RuleSet(Patient patient, List<PatientRule> patientRuleList, List<PRKRule> PRKRuleList, List<ATCRule> ATCRuleList) {
-        this.patient = patient;
-        this.patientRuleList = patientRuleList;
-        this.PRKRuleList = PRKRuleList;
-        this.ATCRuleList = ATCRuleList;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 
     public List<PatientRule> getPatientRuleList() {
