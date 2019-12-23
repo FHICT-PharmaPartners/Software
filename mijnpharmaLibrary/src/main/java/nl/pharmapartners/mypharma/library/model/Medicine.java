@@ -75,6 +75,14 @@ public class Medicine {
         this.atc = atc;
     }
 
+    public Atc getAtc() {
+        return atc;
+    }
+
+    public void setAtc(Atc atc) {
+        this.atc = atc;
+    }
+  
     public void setId(String id) {
         this.id = id;
     }

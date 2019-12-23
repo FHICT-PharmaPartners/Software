@@ -9,6 +9,8 @@ import nl.pharmapartners.mypharma.library.model.Diagnosis;
 import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.PatientMedicine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +39,11 @@ public class PatientMedicineController {
     @GetMapping()
     public List<PatientMedicine> getAllPatientMedicine() {
         return patientMedicineRepository.findAll();
+    }
+  
+    @PostMapping(path = "/addMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine){
+        patientMedicineRepository.save(patientMedicine);
     }
 
     @GetMapping(value = "/checkAllMedicine/{id}")
