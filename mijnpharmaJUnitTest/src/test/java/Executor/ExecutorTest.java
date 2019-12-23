@@ -1,6 +1,5 @@
 package Executor;
 
-import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
 import nl.pharmapartners.mypharma.library.algorithm.execution.Executor;
 import nl.pharmapartners.mypharma.library.algorithm.models.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
@@ -45,7 +44,7 @@ public class ExecutorTest {
 
     @Test
     void testMultipleMedicineFail() {
-        setSecondMedicine();
+        setThirdMedicine();
         executor = new Executor(ruleSets, patient);
         diagnosis = executor.checkAll();
 
@@ -67,6 +66,19 @@ public class ExecutorTest {
     }
 
     private void setSecondMedicine() {
+        Medicine medicine = new Medicine();
+        PatientMedicine patientMedicine = new PatientMedicine();
+
+        //set medicine
+        medicine.setMedicineAtc("testMedicine2");
+        medicine.setId("420");
+        medicine.setName("TestPil");
+        patientMedicine.setMedicine(medicine);
+        patientMedicine.setDosage(2);
+        patient.getMedicineList().add(patientMedicine);
+    }
+
+    private void setThirdMedicine() {
         Medicine medicine = new Medicine();
         PatientMedicine patientMedicine = new PatientMedicine();
 
