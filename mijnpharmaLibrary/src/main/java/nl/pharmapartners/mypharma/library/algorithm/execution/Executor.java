@@ -10,7 +10,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Executor {
-    private Algorithm algorithm;
     private Patient patient;
     private List<RuleSet> ruleSets;
     ExecutorService pool;
@@ -18,12 +17,11 @@ public class Executor {
     public Executor(List<RuleSet> ruleSets, Patient patient) {
         this.ruleSets = ruleSets;
         this.patient = patient;
-        algorithm = new Algorithm();
         //set threadpool
         pool = Executors.newFixedThreadPool(patient.getMedicineList().size());
     }
 
-    public Diagnosis checkAll(){
+    public Diagnosis checkAll() {
         List<Diagnosis> diagnoses = new ArrayList<>();
         Diagnosis finalDiagnosis = new Diagnosis();
         finalDiagnosis.setPassed(true);
@@ -31,8 +29,7 @@ public class Executor {
         List<AlgorithmThread> threads = new ArrayList<>();
 
         //run algorithm for each medicine
-        for (PatientMedicine m : patient.getMedicineList()){
-            //diagnoses.add(algorithm.run(getRuleSet(m.getMedicine().getId()), patient));
+        for (PatientMedicine m : patient.getMedicineList()) {
             AlgorithmThread thread = new AlgorithmThread(getRuleSet(m.getMedicine().getId()), patient);
             pool.execute(thread);
             threads.add(thread);
@@ -51,8 +48,8 @@ public class Executor {
         }
 
         //merge diagnoses to one final diagnosis
-        for (AlgorithmThread t : threads){
-            if(!t.getDiagnosis().isPassed()){
+        for (AlgorithmThread t : threads) {
+            if (!t.getDiagnosis().isPassed()) {
                 finalDiagnosis.setPassed(false);
             }
             finalDiagnosis.getIssues().addAll(t.getDiagnosis().getIssues());
@@ -61,9 +58,9 @@ public class Executor {
         return finalDiagnosis;
     }
 
-    private RuleSet getRuleSet(String id){
-        for (RuleSet r : ruleSets){
-            if (r.getMedicineId().equals(id)){
+    private RuleSet getRuleSet(String id) {
+        for (RuleSet r : ruleSets) {
+            if (r.getMedicineId().equals(id)) {
                 return r;
             }
         }
