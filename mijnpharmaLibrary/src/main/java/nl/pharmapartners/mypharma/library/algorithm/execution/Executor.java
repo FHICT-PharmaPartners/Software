@@ -22,7 +22,6 @@ public class Executor {
     }
 
     public Diagnosis checkAll() {
-        List<Diagnosis> diagnoses = new ArrayList<>();
         Diagnosis finalDiagnosis = new Diagnosis();
         finalDiagnosis.setPassed(true);
         finalDiagnosis.setIssues(new ArrayList<>());
