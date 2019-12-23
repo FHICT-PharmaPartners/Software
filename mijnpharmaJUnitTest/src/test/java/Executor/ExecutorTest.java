@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ExecutorTest {
     private Patient patient;
@@ -30,7 +30,7 @@ public class ExecutorTest {
         executor = new Executor(ruleSets, patient);
         diagnosis = executor.checkAll();
 
-        assertEquals(true, diagnosis.isPassed());
+        assertTrue(diagnosis.isPassed());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ExecutorTest {
         executor = new Executor(ruleSets, patient);
         diagnosis = executor.checkAll();
 
-        assertEquals(true, diagnosis.isPassed());
+        assertTrue(diagnosis.isPassed());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ExecutorTest {
         executor = new Executor(ruleSets, patient);
         diagnosis = executor.checkAll();
 
-        assertEquals(false, diagnosis.isPassed());
+        assertFalse(diagnosis.isPassed());
     }
 
     private void setMedicine() {
