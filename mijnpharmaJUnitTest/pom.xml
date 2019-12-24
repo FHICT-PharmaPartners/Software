@@ -9,22 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>nl.mijnpharma</groupId>
     <artifactId>mijnpharmaJUnitTest</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>nl.mijnpharma</groupId>
-            <artifactId>mijnpharmaLibrary</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>nl.mijnpharma</groupId>
             <artifactId>mijnpharmaLibrary</artifactId>
