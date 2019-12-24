@@ -2,7 +2,6 @@ package nl.pharmapartners.mypharma.pl.controllers;
 
 import nl.pharmapartners.mypharma.library.dal.repository.PatientMedicineRepository;
 import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
-import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -39,5 +38,15 @@ public class UserController {
     @GetMapping()
     public List<User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    @GetMapping(path = "/token/{token}")
+    public User getUserByToken(@PathVariable String token) {
+        User user = new User();
+        user.setJwt(token);
+        Example<User> example = Example.of(user);
+        Optional<User> option = userRepository.findOne(example);
+
+        return option.get();
     }
 }
