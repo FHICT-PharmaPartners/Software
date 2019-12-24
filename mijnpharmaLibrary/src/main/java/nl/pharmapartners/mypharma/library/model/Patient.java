@@ -36,6 +36,10 @@ public class Patient {
         this.age = age;
     }
 
+    public Patient() {
+        //empty constructor for jpa
+    }
+
     public String getId() {
         return id;
     }

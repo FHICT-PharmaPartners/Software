@@ -21,7 +21,7 @@ public class Executor {
         pool = Executors.newFixedThreadPool(patient.getMedicineList().size());
     }
 
-    public Diagnosis checkAll() {
+    public Diagnosis generateDiagnosis() {
         Diagnosis finalDiagnosis = new Diagnosis();
         finalDiagnosis.setPassed(true);
         finalDiagnosis.setIssues(new ArrayList<>());

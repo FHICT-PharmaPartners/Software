@@ -44,18 +44,29 @@ public class PatientMedicineController {
     @PostMapping(path = "/addMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine) {
         patientMedicineRepository.save(patientMedicine);
-        Diagnosis diagnosis = generateDiagnosis(patientMedicine.getId());
+    }
+
+    @GetMapping(path = "/getDiagnosis/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Diagnosis getDiagnosis(@PathVariable String id) {
+        return generateDiagnosis(id);
     }
 
     private Diagnosis generateDiagnosis(String id) {
         List<RuleSet> ruleSets = new ArrayList<>();
         //get patient
         Patient patient = patientRepository.findById(id).get();
+        patient.setMedicineList(getAllPatientMedicine());
         //get rulesets for all medication
         for (PatientMedicine m : patient.getMedicineList()) {
             ruleSets.add(ruleSetRepository.findById(m.getMedicine().getId()).get());
+            //ruleset lists vullen met regels uit db
         }
-        Executor executor = new Executor(ruleSets, patient);
-        return executor.checkAll();
+
+        //only execute if rulesets are present
+        if (ruleSets.size() > 0) {
+            Executor executor = new Executor(ruleSets, patient);
+            return executor.generateDiagnosis();
+        }
+        return new Diagnosis();
     }
 }
