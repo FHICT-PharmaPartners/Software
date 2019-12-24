@@ -40,14 +40,14 @@ public class PatientMedicineController {
     public List<PatientMedicine> getAllPatientMedicine() {
         return patientMedicineRepository.findAll();
     }
-  
+
     @PostMapping(path = "/addMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine){
+    public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine) {
         patientMedicineRepository.save(patientMedicine);
+        generateDiagnosis(patientMedicine.getId());
     }
 
-    @GetMapping(value = "/checkAllMedicine/{id}")
-    public Diagnosis checkAllMedicine(@PathVariable String id) {
+    private Diagnosis generateDiagnosis(String id) {
         List<RuleSet> ruleSets = new ArrayList<>();
         //get patient
         Patient patient = patientRepository.findById(id).get();

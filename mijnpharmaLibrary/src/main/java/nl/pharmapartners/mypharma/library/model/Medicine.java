@@ -65,14 +65,6 @@ public class Medicine {
   
     public void setPrk(Prk prk){
       this.prk = prk;
-    }  
-
-    public Atc getAtc() {
-        return atc;
-    }
-
-    public void setAtc(Atc atc) {
-        this.atc = atc;
     }
 
     public Atc getAtc() {
