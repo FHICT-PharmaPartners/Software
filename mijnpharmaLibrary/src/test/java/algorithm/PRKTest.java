@@ -90,7 +90,7 @@ public class PRKTest {
         prkRules.add(secondPRKRule);
 
         //set medicine
-        medicine.setMedicinePrk("src/test");
+        medicine.setMedicinePrk("test");
         patientMedicine.setMedicine(medicine);
         medicationList.add(patientMedicine);
 
