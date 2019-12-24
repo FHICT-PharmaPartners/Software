@@ -4,6 +4,7 @@ import nl.pharmapartners.mypharma.library.model.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,15 +16,15 @@ public class RuleSet {
     private String medicineId;
     private String name;
     @OneToMany
-    private List<PatientRule> patientRuleList;
+    private List<PatientRule> patientRuleList = new ArrayList<>();
     @OneToMany
-    private List<PRKRule> PRKRuleList;
+    private List<PRKRule> PRKRuleList = new ArrayList<>();
     @OneToMany
-    private List<DosageRule> dosageRuleList;
+    private List<DosageRule> dosageRuleList = new ArrayList<>();
     @OneToMany
-    private List<DurationRule> durationRuleList;
+    private List<DurationRule> durationRuleList = new ArrayList<>();
     @OneToMany
-    private List<ATCRule> ATCRuleList;
+    private List<ATCRule> ATCRuleList = new ArrayList<>();
 
     public RuleSet() {
         //empty constructor
