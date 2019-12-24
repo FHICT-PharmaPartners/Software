@@ -10,7 +10,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
-      <module name="mijnpharmaJUnitTest" target="11" />
       <module name="mijnpharmaRESTServer" target="11" />
     </bytecodeTargetLevel>
   </component>
