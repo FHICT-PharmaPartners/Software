@@ -16,7 +16,7 @@
             <groupId>nl.mijnpharma</groupId>
             <artifactId>mijnpharmaLibrary</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
+            <scope>test-jar</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
