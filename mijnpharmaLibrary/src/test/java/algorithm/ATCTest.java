@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ATCTest {
     private Algorithm algorithm;
@@ -86,7 +86,7 @@ public class ATCTest {
         atcRules.add(secondATCRule);
 
         //set medicine
-        medicine.setMedicineAtc("test");
+        medicine.setMedicineAtc("src/test");
         patientMedicine.setMedicine(medicine);
         medicationList.add(patientMedicine);
 
