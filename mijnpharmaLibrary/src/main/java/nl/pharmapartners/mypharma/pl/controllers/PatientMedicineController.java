@@ -44,7 +44,7 @@ public class PatientMedicineController {
     @PostMapping(path = "/addMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine) {
         patientMedicineRepository.save(patientMedicine);
-        Diagnosis diagnosis = generateDiagnosis(patientMedicine.getId());
+        generateDiagnosis(patientMedicine.getId());
     }
 
     private Diagnosis generateDiagnosis(String id) {
