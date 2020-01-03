@@ -15,6 +15,7 @@ public class User {
     private String lastName;
     private String emailAddress;
     private String password;
+    private String jwt;
 
     @Column(nullable = true)
     private String insertion;
@@ -63,6 +64,14 @@ public class User {
         this.password = password;
     }
 
+    public String getJwt() {
+        return jwt;
+    }
+
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
+    }
+  
     public String getUserName() {
         return userName;
     }
