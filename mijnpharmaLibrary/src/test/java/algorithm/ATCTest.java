@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ATCTest {
     private Algorithm algorithm;
@@ -33,9 +34,7 @@ public class ATCTest {
     @Test
     void testNoATC() { //test empty rule list. Should always return true.
         resetATC();
-
-        boolean expected = true;
-        assertEquals(expected, algorithm.checkATC(atcRules, medicationList));
+        assertTrue(algorithm.checkATC(atcRules, medicationList));
     }
 
     @Test
@@ -52,8 +51,7 @@ public class ATCTest {
         patientMedicine.setMedicine(medicine);
         medicationList.add(patientMedicine);
 
-        boolean expected = true;
-        assertEquals(expected, algorithm.checkATC(atcRules, medicationList));
+        assertTrue(algorithm.checkATC(atcRules, medicationList));
     }
 
     @Test
@@ -85,7 +83,7 @@ public class ATCTest {
         atcRules.add(secondATCRule);
 
         //set medicine
-        medicine.setMedicineAtc("test");
+        medicine.setMedicineAtc("src/test");
         patientMedicine.setMedicine(medicine);
         medicationList.add(patientMedicine);
 
