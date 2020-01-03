@@ -6,6 +6,7 @@ public class Diagnosis {
     private boolean passed = true; //default is true (if nothing to check it should pass)
     private List<String> issues;
     private boolean seeDoctor;
+    private String advice;
 
     public boolean isPassed() {
         return passed;
@@ -29,5 +30,13 @@ public class Diagnosis {
 
     public void setSeeDoctor(boolean seeDoctor) {
         this.seeDoctor = seeDoctor;
+    }
+
+    public String getAdvice() {
+        return advice;
+    }
+
+    public void setAdvice(String advice) {
+        this.advice = advice;
     }
 }

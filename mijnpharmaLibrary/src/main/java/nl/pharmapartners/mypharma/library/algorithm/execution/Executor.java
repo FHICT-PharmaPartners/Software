@@ -54,6 +54,11 @@ public class Executor {
             finalDiagnosis.getIssues().addAll(t.getDiagnosis().getIssues());
         }
 
+        if(finalDiagnosis.getIssues().size() > 0){
+            finalDiagnosis.setSeeDoctor(true);
+            finalDiagnosis.setAdvice("Neem contact op met uw arts.");
+        }
+
         return finalDiagnosis;
     }
 
