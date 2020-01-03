@@ -31,4 +31,8 @@ public class DurationRule {
     public void setOperator(int operator) {
         this.operator = operator;
     }
+
+    public String getId() {
+        return id;
+    }
 }
