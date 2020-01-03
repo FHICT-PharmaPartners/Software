@@ -61,8 +61,6 @@ public class PatientMedicineController {
 
     @GetMapping(path = "/getDiagnosis/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Diagnosis getDiagnosis(@PathVariable String id) {
-        //debug methode
-        Diagnosis diagnosis = generateDiagnosis(id);
         return generateDiagnosis(id);
     }
 

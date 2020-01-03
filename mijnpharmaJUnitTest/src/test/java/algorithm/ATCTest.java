@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ATCTest {
     private Algorithm algorithm;
@@ -70,8 +70,7 @@ public class ATCTest {
         patientMedicine.setMedicine(medicine);
         medicationList.add(patientMedicine);
 
-        boolean expected = false;
-        assertEquals(expected, algorithm.checkATC(atcRules, medicationList));
+        assertFalse(algorithm.checkATC(atcRules, medicationList));
     }
 
     @Test
@@ -91,8 +90,7 @@ public class ATCTest {
         medicationList.add(patientMedicine);
 
         //should return true, no atc should match
-        boolean expected = true;
-        assertEquals(expected, algorithm.checkATC(atcRules, medicationList));
+        assertTrue(algorithm.checkATC(atcRules, medicationList));
     }
 
     @Test
@@ -119,8 +117,7 @@ public class ATCTest {
         atcRules.add(atcRule1);
 
         //should return false, one atc should match
-        boolean expected = false;
-        assertEquals(expected, algorithm.checkATC(atcRules, medicationList));
+        assertFalse(algorithm.checkATC(atcRules, medicationList));
     }
 
     private void resetATC() {
