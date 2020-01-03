@@ -21,6 +21,9 @@ public class PRKRule {
         this.PRKCheck = PRKCheck;
     }
 
+    public PRKRule() {
+    }
+
     public String getId() {
         return id;
     }

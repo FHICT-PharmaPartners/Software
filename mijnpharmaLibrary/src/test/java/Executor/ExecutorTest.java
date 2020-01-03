@@ -28,7 +28,7 @@ public class ExecutorTest {
     @Test
     void testCheckAll() {
         executor = new Executor(ruleSets, patient);
-        diagnosis = executor.checkAll();
+        diagnosis = executor.generateDiagnosis();
 
         assertTrue(diagnosis.isPassed());
     }
@@ -37,7 +37,7 @@ public class ExecutorTest {
     void testMultipleMedicine() {
         setSecondMedicine();
         executor = new Executor(ruleSets, patient);
-        diagnosis = executor.checkAll();
+        diagnosis = executor.generateDiagnosis();
 
         assertTrue(diagnosis.isPassed());
     }
@@ -46,7 +46,7 @@ public class ExecutorTest {
     void testMultipleMedicineFail() {
         setThirdMedicine();
         executor = new Executor(ruleSets, patient);
-        diagnosis = executor.checkAll();
+        diagnosis = executor.generateDiagnosis();
 
         assertFalse(diagnosis.isPassed());
     }

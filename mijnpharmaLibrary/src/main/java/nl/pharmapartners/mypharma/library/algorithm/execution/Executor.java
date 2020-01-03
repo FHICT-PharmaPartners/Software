@@ -21,7 +21,7 @@ public class Executor {
         pool = Executors.newFixedThreadPool(patient.getMedicineList().size());
     }
 
-    public Diagnosis checkAll() {
+    public Diagnosis generateDiagnosis() {
         Diagnosis finalDiagnosis = new Diagnosis();
         finalDiagnosis.setPassed(true);
         finalDiagnosis.setIssues(new ArrayList<>());
@@ -52,6 +52,11 @@ public class Executor {
                 finalDiagnosis.setPassed(false);
             }
             finalDiagnosis.getIssues().addAll(t.getDiagnosis().getIssues());
+        }
+
+        if(finalDiagnosis.getIssues().size() > 0){
+            finalDiagnosis.setSeeDoctor(true);
+            finalDiagnosis.setAdvice("Neem contact op met uw arts.");
         }
 
         return finalDiagnosis;
