@@ -10,11 +10,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    private String userName;
     private String firstName;
     private String lastName;
     private String emailAddress;
     private String password;
+    private String token;
 
     @Column(nullable = true)
     private String insertion;
@@ -63,11 +63,12 @@ public class User {
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getToken() {
+        return token;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setToken(String token) {
+        this.token = token;
     }
+
 }
