@@ -6,6 +6,7 @@ import nl.pharmapartners.mypharma.library.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,13 +41,20 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping(path = "/token/{token}")
-    public User getUserByToken(@PathVariable String token) {
+    @GetMapping(path = "/{token}")
+    public User getUserByToken(@PathVariable String token){
+
         User user = new User();
+        user.setToken(token);
         user.setJwtToken(token);
         Example<User> example = Example.of(user);
-        Optional<User> option = userRepository.findOne(example);
+        Optional<User> optionalUser = userRepository.findOne(example);
 
-        return option.get();
+        if(optionalUser.isEmpty()) {
+            throw new UsernameNotFoundException("Could not find user with token: " + token);
+        }
+
+        user = optionalUser.get();
+        return user;
     }
 }

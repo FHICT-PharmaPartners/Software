@@ -14,7 +14,7 @@ public class User {
     private String lastName;
     private String emailAddress;
     private String password;
-    private String jwtToken;
+    private String token;
 
     @Column(nullable = true)
     private String insertion;
@@ -63,12 +63,16 @@ public class User {
         this.password = password;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getToken() {
+        return token;
     }
 
-    public String getJwtToken() {
-        return jwtToken;
+    public void setToken(String token) {
+        this.token = token;
+    }
+  
+    public String getUserName() {
+        return userName;
     }
 
     public void setJwtToken(String jwtToken) {

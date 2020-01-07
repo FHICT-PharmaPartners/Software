@@ -1,6 +1,5 @@
 package nl.pharmapartners.mypharma.pl.controllers;
 
-
 import nl.pharmapartners.mypharma.library.AuthenticationRequest;
 import nl.pharmapartners.mypharma.library.AuthenticationResponse;
 import nl.pharmapartners.mypharma.library.JwtUtil;
@@ -14,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,16 +27,19 @@ public class LoginController {
 
     private UserDetailService userDetailsService;
     private JwtUtil jwtUtil;
+    private UserRepository userRepository;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserRepository userRepository;
-
+  
     @Autowired
-    private void setUserDetailsService(UserDetailService userDetailsService) {
+    private void setUserDetailsService(UserDetailService userDetailsService,
+                                       UserRepository userRepository) {
         this.userDetailsService = userDetailsService;
+        this.userRepository = userRepository;
     }
 
     @Autowired
@@ -57,12 +60,17 @@ public class LoginController {
         final String jwt = jwtUtil.generateToken(userDetails);
 
         User user = new User();
-        user.setJwtToken(jwt);
+        user.setEmailAddress(authenticationRequest.getUsername());
+      
         Example<User> example = Example.of(user);
-        Optional<User> option = userRepository.findOne(example);
+        Optional<User> optionalUser = userRepository.findOne(example);
 
-        user = option.get();
-        user.setJwtToken(jwt);
+        if(optionalUser.isEmpty()) {
+            throw new UsernameNotFoundException("Could not find user with username: " + authenticationRequest.getUsername());
+        }
+
+        user = optionalUser.get();
+        user.setToken(jwt);
 
         userRepository.save(user);
 
