@@ -1,14 +1,16 @@
 package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
-import nl.pharmapartners.mypharma.library.model.*;
+import nl.pharmapartners.mypharma.library.model.Medicine;
+import nl.pharmapartners.mypharma.library.model.PRKRule;
+import nl.pharmapartners.mypharma.library.model.PatientMedicine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PRKTest {
     private Algorithm algorithm;

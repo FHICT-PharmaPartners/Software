@@ -10,7 +10,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    private String userName;
     private String firstName;
     private String lastName;
     private String emailAddress;
@@ -76,7 +75,7 @@ public class User {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setJwtToken(String jwtToken) {
+        this.jwtToken = jwtToken;
     }
 }

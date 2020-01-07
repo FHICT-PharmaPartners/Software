@@ -60,8 +60,8 @@ public class LoginController {
         final String jwt = jwtUtil.generateToken(userDetails);
 
         User user = new User();
-      
         user.setEmailAddress(authenticationRequest.getUsername());
+      
         Example<User> example = Example.of(user);
         Optional<User> optionalUser = userRepository.findOne(example);
 

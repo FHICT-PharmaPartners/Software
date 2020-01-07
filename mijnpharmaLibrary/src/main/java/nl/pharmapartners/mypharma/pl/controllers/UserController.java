@@ -46,6 +46,7 @@ public class UserController {
 
         User user = new User();
         user.setToken(token);
+        user.setJwtToken(token);
         Example<User> example = Example.of(user);
         Optional<User> optionalUser = userRepository.findOne(example);
 

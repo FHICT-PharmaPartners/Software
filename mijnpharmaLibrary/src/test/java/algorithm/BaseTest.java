@@ -1,7 +1,6 @@
 package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
-import nl.pharmapartners.mypharma.library.model.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BaseTest {
     private Patient patient;
