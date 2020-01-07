@@ -36,4 +36,8 @@ public class DosageRule {
     public void setOperator(int operator) {
         this.operator = operator;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
