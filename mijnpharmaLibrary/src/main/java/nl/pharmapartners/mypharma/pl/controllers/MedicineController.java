@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/medicine")
+@CrossOrigin(origins = "http://localhost:1800", maxAge = 3600)
 public class MedicineController {
 
     private MedicineRepository medicineRepository;

@@ -1,7 +1,18 @@
 package nl.pharmapartners.mypharma.library.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class DurationRule {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
     private int DurationCheck;
     private int operator;
 
@@ -19,5 +30,9 @@ public class DurationRule {
 
     public void setOperator(int operator) {
         this.operator = operator;
+    }
+
+    public String getId() {
+        return id;
     }
 }

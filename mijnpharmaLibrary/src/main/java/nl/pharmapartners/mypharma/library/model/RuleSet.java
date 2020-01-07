@@ -1,18 +1,30 @@
-package nl.pharmapartners.mypharma.library.algorithm.models;
+package nl.pharmapartners.mypharma.library.model;
 
 import nl.pharmapartners.mypharma.library.model.*;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class RuleSet {
-    private int MFBId;
-    private MFB mfb;
-    private Patient patient;
-    private List<PatientRule> patientRuleList;
-    private List<PRKRule> PRKRuleList;
-    private List<DosageRule> dosageRuleList;
-    private List<DurationRule> durationRuleList;
-    private List<ATCRule> ATCRuleList;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
+    private String medicineId;
+    private String name;
+    @OneToMany
+    private List<PatientRule> patientRuleList = new ArrayList<>();
+    @OneToMany
+    private List<PRKRule> PRKRuleList = new ArrayList<>();
+    @OneToMany
+    private List<DosageRule> dosageRuleList = new ArrayList<>();
+    @OneToMany
+    private List<DurationRule> durationRuleList = new ArrayList<>();
+    @OneToMany
+    private List<ATCRule> ATCRuleList = new ArrayList<>();
 
     public RuleSet() {
         //empty constructor
@@ -22,21 +34,6 @@ public class RuleSet {
         this.patientRuleList = patientRuleList;
         this.PRKRuleList = PRKRuleList;
         this.ATCRuleList = ATCRuleList;
-    }
-
-    public RuleSet(Patient patient, List<PatientRule> patientRuleList, List<PRKRule> PRKRuleList, List<ATCRule> ATCRuleList) {
-        this.patient = patient;
-        this.patientRuleList = patientRuleList;
-        this.PRKRuleList = PRKRuleList;
-        this.ATCRuleList = ATCRuleList;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 
     public List<PatientRule> getPatientRuleList() {
@@ -79,19 +76,19 @@ public class RuleSet {
         this.ATCRuleList = ATCRuleList;
     }
 
-    public int getMFBId() {
-        return MFBId;
+    public String getMedicineId() {
+        return medicineId;
     }
 
-    public void setMFBId(int MFBId) {
-        this.MFBId = MFBId;
+    public void setMedicineId(String medicineId) {
+        this.medicineId = medicineId;
     }
 
-    public MFB getMfb() {
-        return mfb;
+    public String getName() {
+        return name;
     }
 
-    public void setMfb(MFB mfb) {
-        this.mfb = mfb;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -1,5 +1,7 @@
 package nl.pharmapartners.mypharma.library.algorithm.models;
 
+import nl.pharmapartners.mypharma.library.model.RuleSet;
+
 public class MFB {
     private int id;
     private String name;
