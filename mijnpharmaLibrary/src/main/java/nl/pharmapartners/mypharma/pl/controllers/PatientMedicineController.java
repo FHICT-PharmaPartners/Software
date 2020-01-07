@@ -21,11 +21,17 @@ public class PatientMedicineController {
     private PatientRepository patientRepository;
     private RuleSetRepository ruleSetRepository;
     private UserRepository userRepository;
+
+    @Autowired
     private ATCRuleRepository atcRuleRepository;
+    @Autowired
     private PRKRuleRepository prkRuleRepository;
+    @Autowired
     private DosageRuleRepository dosageRuleRepository;
-    private DurationRuleRepository durationRuleRepository;
+    @Autowired
     private PatientRuleRepository patientRuleRepository;
+    @Autowired
+    private DurationRuleRepository durationRuleRepository;
 
     @Autowired
     private void setPatientMedicineRepository(PatientMedicineRepository patientMedicineRepository,

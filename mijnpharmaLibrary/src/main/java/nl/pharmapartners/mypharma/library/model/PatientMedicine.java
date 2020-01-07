@@ -22,7 +22,8 @@ public class PatientMedicine {
     @ManyToOne
     private Medicine medicine;
 
-    private String userId;
+    @ManyToOne
+    private User user;
 
     public String getId() {
         return id;
@@ -68,11 +69,11 @@ public class PatientMedicine {
         this.medicine = medicine;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
