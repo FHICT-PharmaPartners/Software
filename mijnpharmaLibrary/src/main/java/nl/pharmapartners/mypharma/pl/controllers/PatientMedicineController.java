@@ -32,6 +32,8 @@ public class PatientMedicineController {
     private PatientRuleRepository patientRuleRepository;
     @Autowired
     private DurationRuleRepository durationRuleRepository;
+    @Autowired
+    private MedicineRepository medicineRepository;
 
     @Autowired
     private void setPatientMedicineRepository(PatientMedicineRepository patientMedicineRepository,
@@ -52,7 +54,7 @@ public class PatientMedicineController {
         Example<User> example = Example.of(user);
         Optional<User> optionalUser = userRepository.findOne(example);
 
-        if(optionalUser.isEmpty()) {
+        if (optionalUser.isEmpty()) {
             throw new UsernameNotFoundException("Could not find user with token: " + token);
         }
 
@@ -61,22 +63,55 @@ public class PatientMedicineController {
         return patientMedicineRepository.findByUser(user);
     }
 
-    @PostMapping(path = "/addMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine) {
+    @PostMapping(path = "/addMedicine/{token}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine, @RequestHeader("medicine") String id, @PathVariable String token) {
+        User user = new User();
+        user.setToken(token);
+        Example<User> example = Example.of(user);
+        Optional<User> optionalUser = userRepository.findOne(example);
+
+        if (optionalUser.isEmpty()) {
+            throw new UsernameNotFoundException("Could not find user with token: " + token);
+        }
+
+        Optional<Medicine> optionalMedicine = medicineRepository.findById(id);
+        Medicine medicine = optionalMedicine.get();
+
+        patientMedicine.setMedicine(medicine);
+
+        user = optionalUser.get();
+        patientMedicine.setUser(user);
+
         patientMedicineRepository.save(patientMedicine);
     }
 
-    @GetMapping(path = "/getDiagnosis/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Diagnosis getDiagnosis(@PathVariable String id) {
-        return generateDiagnosis(id);
+    @GetMapping(path = "/diagnosis", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Diagnosis getDiagnosis(@RequestHeader("Authorization") String header) {
+        String token = header.split(" ")[1];
+        return generateDiagnosis(token);
     }
 
-    private Diagnosis generateDiagnosis(String id) {
+    private Diagnosis generateDiagnosis(String token) {
         List<RuleSet> ruleSets = new ArrayList<>();
         //get patient
-        Patient patient = patientRepository.findById(id).get();
-        User user = userRepository.getOne(id);
+        User user = new User();
+        user.setToken(token);
+        Example<User> example = Example.of(user);
+        Optional<User> optionalUser = userRepository.findOne(example);
+
+        if (optionalUser.isEmpty()) {
+            throw new UsernameNotFoundException("Could not find user with token: " + token);
+        }
+
+        user = optionalUser.get();
+
+//        patientMedicine.setMedicine(medicine);
+        user = optionalUser.get();
+//        patientMedicine.setUser(user);
+
+        Patient patient = patientRepository.findById(user.getId()).get();
         patient.setMedicineList(getPatientMedicine(user.getToken()));
+
         //get rulesets for all medication
         for (PatientMedicine m : patient.getMedicineList()) {
             RuleSet ruleSet = ruleSetRepository.findById(m.getMedicine().getId()).get();
