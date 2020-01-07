@@ -2,7 +2,6 @@ package nl.pharmapartners.mypharma.pl.controllers;
 
 import nl.pharmapartners.mypharma.library.dal.repository.PatientMedicineRepository;
 import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
-import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;

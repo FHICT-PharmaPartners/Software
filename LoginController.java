@@ -1,5 +1,6 @@
 package nl.pharmapartners.mypharma.pl.controllers;
 
+
 import nl.pharmapartners.mypharma.library.AuthenticationRequest;
 import nl.pharmapartners.mypharma.library.AuthenticationResponse;
 import nl.pharmapartners.mypharma.library.JwtUtil;
@@ -13,8 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,24 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:1800", maxAge = 3600)
 public class LoginController {
 
     private UserDetailService userDetailsService;
     private JwtUtil jwtUtil;
-    private UserRepository userRepository;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserRepository userRepository;
-  
+
     @Autowired
-    private void setUserDetailsService(UserDetailService userDetailsService,
-                                       UserRepository userRepository) {
+    private void setUserDetailsService(UserDetailService userDetailsService) {
         this.userDetailsService = userDetailsService;
-        this.userRepository = userRepository;
     }
 
     @Autowired
@@ -55,22 +51,18 @@ public class LoginController {
         } catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
         }
+
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
 
         User user = new User();
-      
-        user.setEmailAddress(authenticationRequest.getUsername());
+        user.setJwtToken(jwt);
         Example<User> example = Example.of(user);
-        Optional<User> optionalUser = userRepository.findOne(example);
+        Optional<User> optional = userRepository.findOne(example);
 
-        if(optionalUser.isEmpty()) {
-            throw new UsernameNotFoundException("Could not find user with username: " + authenticationRequest.getUsername());
-        }
-
-        user = optionalUser.get();
-        user.setToken(jwt);
+        user = optional.get();
+        user.setJwtToken(jwt);
 
         userRepository.save(user);
 

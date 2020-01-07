@@ -24,6 +24,11 @@ public class PatientMedicineController {
     private PatientRepository patientRepository;
     private RuleSetRepository ruleSetRepository;
     private UserRepository userRepository;
+    private ATCRuleRepository atcRuleRepository;
+    private PRKRuleRepository prkRuleRepository;
+    private DosageRuleRepository dosageRuleRepository;
+    private DurationRuleRepository durationRuleRepository;
+    private PatientRuleRepository patientRuleRepository;
 
     @Autowired
     private void setPatientMedicineRepository(PatientMedicineRepository patientMedicineRepository,
@@ -56,18 +61,38 @@ public class PatientMedicineController {
     @PostMapping(path = "/addMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addMedicineToUserList(@RequestBody PatientMedicine patientMedicine) {
         patientMedicineRepository.save(patientMedicine);
-        generateDiagnosis(patientMedicine.getId());
+    }
+
+    @GetMapping(path = "/getDiagnosis/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Diagnosis getDiagnosis(@PathVariable String id) {
+        return generateDiagnosis(id);
     }
 
     private Diagnosis generateDiagnosis(String id) {
         List<RuleSet> ruleSets = new ArrayList<>();
         //get patient
         Patient patient = patientRepository.findById(id).get();
+        patient.setMedicineList(getAllPatientMedicine());
         //get rulesets for all medication
         for (PatientMedicine m : patient.getMedicineList()) {
-            ruleSets.add(ruleSetRepository.findById(m.getMedicine().getId()).get());
+            RuleSet ruleSet = ruleSetRepository.findById(m.getMedicine().getId()).get();
+            String medicineId = ruleSet.getMedicineId();
+
+            ruleSet.getATCRuleList().add(atcRuleRepository.findById(medicineId).get());
+            ruleSet.getPRKRuleList().add(prkRuleRepository.findById(medicineId).get());
+            ruleSet.getDosageRuleList().add(dosageRuleRepository.findById(medicineId).get());
+            ruleSet.getPatientRuleList().add(patientRuleRepository.findById(medicineId).get());
+            ruleSet.getDurationRuleList().add(durationRuleRepository.findById(medicineId).get());
+
+            //add ruleset to list
+            ruleSets.add(ruleSet);
         }
-        Executor executor = new Executor(ruleSets, patient);
-        return executor.checkAll();
+
+        //only execute if rulesets are present
+        if (ruleSets.size() > 0) {
+            Executor executor = new Executor(ruleSets, patient);
+            return executor.generateDiagnosis();
+        }
+        return new Diagnosis();
     }
 }

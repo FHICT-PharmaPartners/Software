@@ -21,6 +21,9 @@ public class ATCRule {
         this.ATCCheck = ATCCheck;
     }
 
+    public ATCRule() {
+    }
+
     public String getId() {
         return id;
     }
