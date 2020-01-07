@@ -1,7 +1,6 @@
 package Executor;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Executor;
-import nl.pharmapartners.mypharma.library.model.RuleSet;
 import nl.pharmapartners.mypharma.library.model.*;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ExecutorTest {
     private Patient patient;

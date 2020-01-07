@@ -2,11 +2,11 @@ package nl.pharmapartners.mypharma.pl.controllers;
 
 import nl.pharmapartners.mypharma.library.dal.repository.PatientMedicineRepository;
 import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
-import nl.pharmapartners.mypharma.library.model.Patient;
 import nl.pharmapartners.mypharma.library.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +39,21 @@ public class UserController {
     @GetMapping()
     public List<User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    @GetMapping(path = "/{token}")
+    public User getUserByToken(@PathVariable String token){
+
+        User user = new User();
+        user.setToken(token);
+        Example<User> example = Example.of(user);
+        Optional<User> optionalUser = userRepository.findOne(example);
+
+        if(optionalUser.isEmpty()) {
+            throw new UsernameNotFoundException("Could not find user with token: " + token);
+        }
+
+        user = optionalUser.get();
+        return user;
     }
 }

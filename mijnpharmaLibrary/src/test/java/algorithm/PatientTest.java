@@ -1,11 +1,7 @@
 package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
-import nl.pharmapartners.mypharma.library.model.RuleSet;
-import nl.pharmapartners.mypharma.library.model.Medication;
-import nl.pharmapartners.mypharma.library.model.Medicine;
-import nl.pharmapartners.mypharma.library.model.Patient;
-import nl.pharmapartners.mypharma.library.model.PatientRule;
+import nl.pharmapartners.mypharma.library.model.*;
 import nl.pharmapartners.mypharma.library.model.enums.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PatientTest {
     private Algorithm algorithm;

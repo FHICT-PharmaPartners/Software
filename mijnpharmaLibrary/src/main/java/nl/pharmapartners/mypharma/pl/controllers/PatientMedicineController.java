@@ -46,7 +46,7 @@ public class PatientMedicineController {
         Example<User> example = Example.of(user);
         Optional<User> optionalUser = userRepository.findOne(example);
 
-        if (optionalUser.isEmpty()) {
+        if(optionalUser.isEmpty()) {
             throw new UsernameNotFoundException("Could not find user with token: " + token);
         }
 
@@ -69,8 +69,7 @@ public class PatientMedicineController {
         List<RuleSet> ruleSets = new ArrayList<>();
         //get patient
         Patient patient = patientRepository.findById(id).get();
-        User user = userRepository.getOne(id);
-        patient.setMedicineList(getPatientMedicine(user.getToken()));
+        patient.setMedicineList(getPatientMedicine(userRepository.getOne(id).getToken()));
         //get rulesets for all medication
         for (PatientMedicine m : patient.getMedicineList()) {
             RuleSet ruleSet = ruleSetRepository.findById(m.getMedicine().getId()).get();
