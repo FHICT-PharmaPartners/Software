@@ -23,6 +23,17 @@ public class PatientMedicineController {
     private UserRepository userRepository;
 
     @Autowired
+    private ATCRuleRepository atcRuleRepository;
+    @Autowired
+    private PRKRuleRepository prkRuleRepository;
+    @Autowired
+    private DosageRuleRepository dosageRuleRepository;
+    @Autowired
+    private PatientRuleRepository patientRuleRepository;
+    @Autowired
+    private DurationRuleRepository durationRuleRepository;
+
+    @Autowired
     private void setPatientMedicineRepository(PatientMedicineRepository patientMedicineRepository,
                                               PatientRepository patientRepository,
                                               RuleSetRepository ruleSetRepository,
@@ -55,37 +66,37 @@ public class PatientMedicineController {
         patientMedicineRepository.save(patientMedicine);
     }
 
-//    @GetMapping(path = "/getDiagnosis/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public Diagnosis getDiagnosis(@PathVariable String id) {
-//        return generateDiagnosis(id);
-//    }
-//
-//    private Diagnosis generateDiagnosis(String id) {
-//        List<RuleSet> ruleSets = new ArrayList<>();
-//        //get patient
-//        Patient patient = patientRepository.findById(id).get();
-//        User user = userRepository.getOne(id);
-//        patient.setMedicineList(getPatientMedicine(user.getToken()));
-//        //get rulesets for all medication
-//        for (PatientMedicine m : patient.getMedicineList()) {
-//            RuleSet ruleSet = ruleSetRepository.findById(m.getMedicine().getId()).get();
-//            String medicineId = ruleSet.getMedicineId();
-//
-//            ruleSet.getATCRuleList().add(atcRuleRepository.findById(medicineId).get());
-//            ruleSet.getPRKRuleList().add(prkRuleRepository.findById(medicineId).get());
-//            ruleSet.getDosageRuleList().add(dosageRuleRepository.findById(medicineId).get());
-//            ruleSet.getPatientRuleList().add(patientRuleRepository.findById(medicineId).get());
-//            ruleSet.getDurationRuleList().add(durationRuleRepository.findById(medicineId).get());
-//
-//            //add ruleset to list
-//            ruleSets.add(ruleSet);
-//        }
-//
-//        //only execute if rulesets are present
-//        if (ruleSets.size() > 0) {
-//            Executor executor = new Executor(ruleSets, patient);
-//            return executor.generateDiagnosis();
-//        }
-//        return new Diagnosis();
-//    }
+    @GetMapping(path = "/getDiagnosis/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Diagnosis getDiagnosis(@PathVariable String id) {
+        return generateDiagnosis(id);
+    }
+
+    private Diagnosis generateDiagnosis(String id) {
+        List<RuleSet> ruleSets = new ArrayList<>();
+        //get patient
+        Patient patient = patientRepository.findById(id).get();
+        User user = userRepository.getOne(id);
+        patient.setMedicineList(getPatientMedicine(user.getToken()));
+        //get rulesets for all medication
+        for (PatientMedicine m : patient.getMedicineList()) {
+            RuleSet ruleSet = ruleSetRepository.findById(m.getMedicine().getId()).get();
+            String medicineId = ruleSet.getMedicineId();
+
+            ruleSet.getATCRuleList().add(atcRuleRepository.findById(medicineId).get());
+            ruleSet.getPRKRuleList().add(prkRuleRepository.findById(medicineId).get());
+            ruleSet.getDosageRuleList().add(dosageRuleRepository.findById(medicineId).get());
+            ruleSet.getPatientRuleList().add(patientRuleRepository.findById(medicineId).get());
+            ruleSet.getDurationRuleList().add(durationRuleRepository.findById(medicineId).get());
+
+            //add ruleset to list
+            ruleSets.add(ruleSet);
+        }
+
+        //only execute if rulesets are present
+        if (ruleSets.size() > 0) {
+            Executor executor = new Executor(ruleSets, patient);
+            return executor.generateDiagnosis();
+        }
+        return new Diagnosis();
+    }
 }
