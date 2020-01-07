@@ -70,12 +70,5 @@ public class User {
     public void setToken(String token) {
         this.token = token;
     }
-  
-    public String getUserName() {
-        return userName;
-    }
 
-    public void setJwtToken(String jwtToken) {
-        this.jwtToken = jwtToken;
-    }
 }

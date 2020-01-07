@@ -1,10 +1,7 @@
 package nl.pharmapartners.mypharma.pl.controllers;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Executor;
-import nl.pharmapartners.mypharma.library.dal.repository.PatientMedicineRepository;
-import nl.pharmapartners.mypharma.library.dal.repository.PatientRepository;
-import nl.pharmapartners.mypharma.library.dal.repository.RuleSetRepository;
-import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
+import nl.pharmapartners.mypharma.library.dal.repository.*;
 import nl.pharmapartners.mypharma.library.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -72,7 +69,8 @@ public class PatientMedicineController {
         List<RuleSet> ruleSets = new ArrayList<>();
         //get patient
         Patient patient = patientRepository.findById(id).get();
-        patient.setMedicineList(getAllPatientMedicine());
+        User user = userRepository.getOne(id);
+        patient.setMedicineList(getPatientMedicine(user.getToken()));
         //get rulesets for all medication
         for (PatientMedicine m : patient.getMedicineList()) {
             RuleSet ruleSet = ruleSetRepository.findById(m.getMedicine().getId()).get();

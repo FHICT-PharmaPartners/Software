@@ -31,9 +31,6 @@ public class LoginController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private UserRepository userRepository;
   
     @Autowired
     private void setUserDetailsService(UserDetailService userDetailsService,
