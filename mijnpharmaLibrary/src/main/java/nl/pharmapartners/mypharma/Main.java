@@ -47,7 +47,7 @@ public class Main extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.cors().and().csrf().disable()
                 .authorizeRequests().antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
@@ -72,8 +72,11 @@ public class Main extends WebSecurityConfigurerAdapter {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("*");
+                        .allowedMethods("*")
+                        .allowedOrigins("*");
+                registry.addMapping("/medicine")
+                        .allowedMethods("*")
+                        .allowedOrigins("*");
             }
         };
     }

@@ -57,12 +57,12 @@ public class LoginController {
         final String jwt = jwtUtil.generateToken(userDetails);
 
         User user = new User();
-        user.setJwt(jwt);
+        user.setJwtToken(jwt);
         Example<User> example = Example.of(user);
         Optional<User> option = userRepository.findOne(example);
 
         user = option.get();
-        user.setJwt(jwt);
+        user.setJwtToken(jwt);
 
         userRepository.save(user);
 

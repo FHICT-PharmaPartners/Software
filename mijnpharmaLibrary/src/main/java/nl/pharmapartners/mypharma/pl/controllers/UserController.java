@@ -43,7 +43,7 @@ public class UserController {
     @GetMapping(path = "/token/{token}")
     public User getUserByToken(@PathVariable String token) {
         User user = new User();
-        user.setJwt(token);
+        user.setJwtToken(token);
         Example<User> example = Example.of(user);
         Optional<User> option = userRepository.findOne(example);
 

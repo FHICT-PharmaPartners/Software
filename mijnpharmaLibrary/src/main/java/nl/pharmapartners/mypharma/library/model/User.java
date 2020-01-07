@@ -10,12 +10,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    private String userName;
     private String firstName;
     private String lastName;
     private String emailAddress;
     private String password;
-    private String jwt;
+    private String jwtToken;
 
     @Column(nullable = true)
     private String insertion;
@@ -64,19 +63,15 @@ public class User {
         this.password = password;
     }
 
-    public String getJwt() {
-        return jwt;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setJwt(String jwt) {
-        this.jwt = jwt;
-    }
-  
-    public String getUserName() {
-        return userName;
+    public String getJwtToken() {
+        return jwtToken;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setJwtToken(String jwtToken) {
+        this.jwtToken = jwtToken;
     }
 }
