@@ -15,6 +15,7 @@ public class Medicine {
     private String description;
     private String medicineAtc;
     private String medicinePrk;
+    private boolean inUse;
 
     @ManyToOne
     private Prk prk;
@@ -77,6 +78,14 @@ public class Medicine {
   
     public void setId(String id) {
         this.id = id;
+    }
+
+    public boolean isInUse() {
+        return inUse;
+    }
+
+    public void setInUse(boolean inUse) {
+        this.inUse = inUse;
     }
 }
 

@@ -108,6 +108,7 @@ public class ExecutorTest {
 
         dosageRule.setDosage(5);
         dosageRule.setOperator(1);
+        dosageRule.setId("69");
         dosageRules.add(dosageRule);
 
         patientRule2.setWeight(80);
@@ -141,6 +142,7 @@ public class ExecutorTest {
 
         dosageRule.setDosage(5);
         dosageRule.setOperator(1);
+        dosageRule.setId("420");
         dosageRules.add(dosageRule);
 
         patientRule2.setWeight(80);

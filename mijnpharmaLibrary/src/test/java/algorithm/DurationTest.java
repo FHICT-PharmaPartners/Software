@@ -1,6 +1,7 @@
 package algorithm;
 
 import nl.pharmapartners.mypharma.library.algorithm.execution.Algorithm;
+import nl.pharmapartners.mypharma.library.model.DosageRule;
 import nl.pharmapartners.mypharma.library.model.DurationRule;
 import nl.pharmapartners.mypharma.library.model.Medicine;
 import nl.pharmapartners.mypharma.library.model.PatientMedicine;
@@ -10,20 +11,16 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DurationTest {
     private Algorithm algorithm;
 
     //create medicine
     private List<PatientMedicine> medicationList;
-    private PatientMedicine patientMedicine;
-    private Medicine medicine;
 
     //create duration and rule
     private List<DurationRule> durationRules;
-    private DurationRule durationRule;
-    private DurationRule secondDurationRule;
 
     @BeforeEach
     void setUp() {
@@ -32,160 +29,86 @@ public class DurationTest {
 
     @Test
     void testDurationFalse() { //test anything that should return false.
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(5, 1);
+        medicationList = resetMedication(10);
 
-        //set duration rule
-        durationRule.setDurationCheck(5);
-        durationRule.setOperator(1);
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(10);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false;
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertFalse(algorithm.checkDuration(durationRules, medicationList));
     }
 
     @Test
     void testDurationMissingValue() {
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(5, 0);
+        medicationList = resetMedication(10);
 
-        //set duration rule
-        durationRule.setDurationCheck(5); //set no operator to test if algorithm catches this.
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(10);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false;
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertFalse(algorithm.checkDuration(durationRules, medicationList));
     }
 
     @Test
     void testDurationLargerThan() { //test one rule with '>' operator. Duration cannot be larger than rule.
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(10,1);
+        medicationList = resetMedication(5);
 
-        //set duration rule
-        durationRule.setDurationCheck(10);
-        durationRule.setOperator(1); // Operator: >
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(5);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true;
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertTrue(algorithm.checkDuration(durationRules, medicationList));
     }
 
     @Test
     void testDurationSmallerThan() { //test one rule with '<' operator. Duration cannot be smaller than rule.
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(2, 2);
+        medicationList = resetMedication(5);
 
-        //set duration rule
-        durationRule.setDurationCheck(2);
-        durationRule.setOperator(2); // Operator: <
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(5);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true;
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertTrue(algorithm.checkDuration(durationRules, medicationList));
     }
 
     @Test
     void testDurationLargerOrEqualFalse() { //test one rule with '>=' operator. Duration is equal to or larger than rule.
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(5, 3);
+        medicationList = resetMedication(6);;
 
-        //set duration rule
-        durationRule.setDurationCheck(5);
-        durationRule.setOperator(3);// Operator: >=
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(6);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false; //false since duration is equal to rule.
-        boolean test = algorithm.checkDuration(durationRules, medicationList);
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertFalse(algorithm.checkDuration(durationRules, medicationList));
     }
 
     @Test
     void testDurationSmallerOrEqualFalse() { //test one rule with '<=' operator. Duration is equal to or smaller than rule.
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(5, 4);
+        medicationList = resetMedication(4);
 
-        //set duration rule
-        durationRule.setDurationCheck(5);
-        durationRule.setOperator(4); //Operator: <=
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(4);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false; //false since duration is equal to rule.
-        boolean test = algorithm.checkDuration(durationRules, medicationList);
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertFalse(algorithm.checkDuration(durationRules, medicationList));
     }
 
     @Test
     void testDurationLargerOrEqualTrue() { //test one rule with '>=' operator. Duration is smaller than rule.
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(5, 3);
+        medicationList = resetMedication(4);
 
-        //set duration rule
-        durationRule.setDurationCheck(5);
-        durationRule.setOperator(3);// Operator: >=
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(4);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true; //true since duration is smaller than rule.
-        boolean test = algorithm.checkDuration(durationRules, medicationList);
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertTrue(algorithm.checkDuration(durationRules, medicationList));
     }
 
     @Test
     void testDurationSmallerOrEqualTrue() { //test one rule with '>=' operator. Duration is larger than rule.
-        resetDuration();
-        resetMedication();
+        durationRules = resetDuration(5, 4);
+        medicationList = resetMedication(6);
 
-        //set duration rule
-        durationRule.setDurationCheck(5);
-        durationRule.setOperator(4); //Operator: <=
-        durationRules.add(durationRule);
-
-        //set medicine
-        patientMedicine.setUsageDuration(6);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true; //true since duration is larger than rule.
-        boolean test = algorithm.checkDuration(durationRules, medicationList);
-        assertEquals(expected, algorithm.checkDuration(durationRules, medicationList));
+        assertTrue(algorithm.checkDuration(durationRules, medicationList));
     }
 
-    private void resetDuration() {
+    private List<DurationRule> resetDuration(int duration, int operator) {
         durationRules = new ArrayList<>();
-        durationRule = new DurationRule();
-        secondDurationRule = new DurationRule();
+        DurationRule durationRule = new DurationRule();
+        durationRule.setId("420");
+        durationRule.setDurationCheck(duration);
+        durationRule.setOperator(operator);
+        durationRules.add(durationRule);
+        return durationRules;
     }
 
-    private void resetMedication() {
+    private List<PatientMedicine> resetMedication(int duration) {
         medicationList = new ArrayList<>();
-        medicine = new Medicine();
-        patientMedicine = new PatientMedicine();
+        Medicine medicine = new Medicine();
+        medicine.setId("420");
+        PatientMedicine patientMedicine = new PatientMedicine();
+        patientMedicine.setMedicine(medicine);
+        patientMedicine.setUsageDuration(duration);
+        medicationList.add(patientMedicine);
+        return medicationList;
     }
 }

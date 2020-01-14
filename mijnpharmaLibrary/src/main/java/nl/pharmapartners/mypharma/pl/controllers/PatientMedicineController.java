@@ -66,6 +66,11 @@ public class PatientMedicineController {
         patientMedicineRepository.save(patientMedicine);
     }
 
+    @PostMapping(path = "/removeMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void removeMedicineFromUserList(@RequestBody PatientMedicine patientMedicine) {
+        patientMedicineRepository.delete(patientMedicine);
+    }
+
     @GetMapping(path = "/getDiagnosis/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Diagnosis getDiagnosis(@PathVariable String id) {
         return generateDiagnosis(id);
