@@ -10,20 +10,16 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DosageTest {
     private Algorithm algorithm;
 
     //create medicine
     private List<PatientMedicine> medicationList;
-    private PatientMedicine patientMedicine;
-    private Medicine medicine;
 
     //create dosage and rule
     private List<DosageRule> dosageRules;
-    private DosageRule dosageRule;
-    private DosageRule secondDosageRule;
 
     @BeforeEach
     void setUp() {
@@ -31,162 +27,86 @@ public class DosageTest {
     }
 
     @Test
-    void testDosageFalse(){ //test anything that should return false.
-        resetDosage();
-        resetMedication();
+    void testDosageFalse() { //test anything that should return false.
+        dosageRules = resetDosage(5, 1);
+        medicationList = resetMedication(10);
 
-        //set Dosage rule
-        dosageRule.setDosage(5);
-        dosageRule.setOperator(1);
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(10);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false;
-        boolean test = algorithm.checkDosage(dosageRules, medicationList);
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+        assertFalse(algorithm.checkDosage(dosageRules, medicationList));
     }
 
     @Test
-    void testDosageMissingValue(){
-        resetDosage();
-        resetMedication();
-
-        //set Dosage rule
-        dosageRule.setDosage(5); //set no operator to test if algorithm catches this.
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(10);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false;
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+    void testDosageMissingValue() {
+        dosageRules = resetDosage(5, 0);
+        medicationList = resetMedication(10);
+        assertFalse(algorithm.checkDosage(dosageRules, medicationList));
     }
 
     @Test
-    void testDosageLargerThan(){ //test one rule with '>' operator. Dosage cannot be larger than rule.
-        resetDosage();
-        resetMedication();
+    void testDosageLargerThan() { //test one rule with '>' operator. Dosage cannot be larger than rule.
+        dosageRules = resetDosage(10, 1);
+        medicationList = resetMedication(5);
 
-        //set Dosage rule
-        dosageRule.setDosage(10);
-        dosageRule.setOperator(1); // Operator: >
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(5);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true;
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+        assertTrue(algorithm.checkDosage(dosageRules, medicationList));
     }
 
     @Test
-    void testDosageSmallerThan(){ //test one rule with '<' operator. Dosage cannot be smaller than rule.
-        resetDosage();
-        resetMedication();
+    void testDosageSmallerThan() { //test one rule with '<' operator. Dosage cannot be smaller than rule.
+        dosageRules = resetDosage(2, 2);
+        medicationList = resetMedication(5);
 
-        //set Dosage rule
-        dosageRule.setDosage(2);
-        dosageRule.setOperator(2); // Operator: <
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(5);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true;
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+        assertTrue(algorithm.checkDosage(dosageRules, medicationList));
     }
 
     @Test
-    void testDosageLargerOrEqualFalse(){ //test one rule with '>=' operator. Dosage is equal to or larger than rule.
-        resetDosage();
-        resetMedication();
+    void testDosageLargerOrEqualFalse() { //test one rule with '>=' operator. Dosage is equal to or larger than rule.
+        dosageRules = resetDosage(5, 3);
+        medicationList = resetMedication(6);
 
-        //set Dosage rule
-        dosageRule.setDosage(5);
-        dosageRule.setOperator(3);// Operator: >=
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(6);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false; //false since Dosage is equal to rule.
-        boolean test = algorithm.checkDosage(dosageRules, medicationList);
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+        assertFalse(algorithm.checkDosage(dosageRules, medicationList));
     }
 
     @Test
-    void testDosageSmallerOrEqualFalse(){ //test one rule with '<=' operator. Dosage is equal to or smaller than rule.
-        resetDosage();
-        resetMedication();
+    void testDosageSmallerOrEqualFalse() { //test one rule with '<=' operator. Dosage is equal to or smaller than rule.
+        dosageRules = resetDosage(5, 4);
+        medicationList = resetMedication(4);
 
-        //set Dosage rule
-        dosageRule.setDosage(5);
-        dosageRule.setOperator(4); //Operator: <=
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(4);
-        medicationList.add(patientMedicine);
-
-        boolean expected = false; //false since Dosage is equal to rule.
-        boolean test = algorithm.checkDosage(dosageRules, medicationList);
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+        assertFalse(algorithm.checkDosage(dosageRules, medicationList));
     }
 
     @Test
-    void testDosageLargerOrEqualTrue(){ //test one rule with '>=' operator. Dosage is smaller than rule.
-        resetDosage();
-        resetMedication();
+    void testDosageLargerOrEqualTrue() { //test one rule with '>=' operator. Dosage is smaller than rule.
+        dosageRules = resetDosage(5, 3);
+        medicationList = resetMedication(4);
 
-        //set Dosage rule
-        dosageRule.setDosage(5);
-        dosageRule.setOperator(3);// Operator: >=
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(4);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true; //true since Dosage is smaller than rule.
-        boolean test = algorithm.checkDosage(dosageRules, medicationList);
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+        assertTrue(algorithm.checkDosage(dosageRules, medicationList));
     }
 
     @Test
-    void testDosageSmallerOrEqualTrue(){ //test one rule with '>=' operator. Dosage is larger than rule.
-        resetDosage();
-        resetMedication();
+    void testDosageSmallerOrEqualTrue() { //test one rule with '>=' operator. Dosage is larger than rule.
+        dosageRules = resetDosage(5, 4);
+        medicationList = resetMedication(6);
 
-        //set Dosage rule
-        dosageRule.setDosage(5);
-        dosageRule.setOperator(4); //Operator: <=
-        dosageRules.add(dosageRule);
-
-        //set medicine
-        patientMedicine.setDosage(6);
-        medicationList.add(patientMedicine);
-
-        boolean expected = true; //true since Dosage is larger than rule.
-        boolean test = algorithm.checkDosage(dosageRules, medicationList);
-        assertEquals(expected, algorithm.checkDosage(dosageRules, medicationList));
+        assertTrue(algorithm.checkDosage(dosageRules, medicationList));
     }
 
-    private void resetDosage(){
+    private List<DosageRule> resetDosage(int dosage, int operator) {
         dosageRules = new ArrayList<>();
-        dosageRule = new DosageRule();
-        secondDosageRule = new DosageRule();
+        DosageRule dosageRule = new DosageRule();
+        dosageRule.setId("420");
+        dosageRule.setDosage(dosage);
+        dosageRule.setOperator(operator);
+        dosageRules.add(dosageRule);
+        return dosageRules;
     }
 
-    private void resetMedication(){
+    private List<PatientMedicine> resetMedication(int dosage) {
         medicationList = new ArrayList<>();
-        medicine = new Medicine();
-        patientMedicine = new PatientMedicine();
+        Medicine medicine = new Medicine();
+        medicine.setId("420");
+        PatientMedicine patientMedicine = new PatientMedicine();
+        patientMedicine.setMedicine(medicine);
+        patientMedicine.setDosage(dosage);
+        medicationList.add(patientMedicine);
+        return medicationList;
     }
 }
