@@ -112,11 +112,13 @@ public class BaseTest {
         DosageRule dosageRule = new DosageRule();
         dosageRule.setDosage(15);
         dosageRule.setOperator(1);
+        dosageRule.setId("42069");
         ruleSet.getDosageRuleList().add(dosageRule);
 
         DurationRule durationRule = new DurationRule();
         durationRule.setDurationCheck(15);
         durationRule.setOperator(1);
+        durationRule.setId("42069");
         ruleSet.getDurationRuleList().add(durationRule);
 
         PatientRule patientRuleAge = new PatientRule();

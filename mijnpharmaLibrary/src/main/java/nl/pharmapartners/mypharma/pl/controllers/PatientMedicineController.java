@@ -90,7 +90,12 @@ public class PatientMedicineController {
         String token = header.split(" ")[1];
         return generateDiagnosis(token);
     }
-
+  
+    @PostMapping(path = "/removeMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void removeMedicineFromUserList(@RequestBody PatientMedicine patientMedicine) {
+        patientMedicineRepository.delete(patientMedicine);
+    }
+  
     private Diagnosis generateDiagnosis(String token) {
         List<RuleSet> ruleSets = new ArrayList<>();
         //get patient
