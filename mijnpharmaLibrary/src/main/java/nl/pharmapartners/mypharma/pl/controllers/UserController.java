@@ -1,6 +1,5 @@
 package nl.pharmapartners.mypharma.pl.controllers;
 
-import nl.pharmapartners.mypharma.library.dal.repository.PatientMedicineRepository;
 import nl.pharmapartners.mypharma.library.dal.repository.UserRepository;
 import nl.pharmapartners.mypharma.library.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import java.util.Optional;
 public class UserController {
 
     private UserRepository userRepository;
-    private PatientMedicineRepository patientRepository;
 
     @Autowired
     private void setUserRepository(UserRepository userRepository){
