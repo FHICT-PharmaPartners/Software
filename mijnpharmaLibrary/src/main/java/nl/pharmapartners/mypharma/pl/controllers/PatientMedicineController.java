@@ -6,6 +6,7 @@ import nl.pharmapartners.mypharma.library.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -89,6 +90,11 @@ public class PatientMedicineController {
     public Diagnosis getDiagnosis(@RequestHeader("Authorization") String header) {
         String token = header.split(" ")[1];
         return generateDiagnosis(token);
+    }
+
+    @DeleteMapping(path = "/removeMedicine")
+    public void removeMedicineFromList(@RequestBody PatientMedicine patientMedicine) {
+        patientMedicineRepository.delete(patientMedicine);
     }
   
     @PostMapping(path = "/removeMedicine", consumes = MediaType.APPLICATION_JSON_VALUE)
